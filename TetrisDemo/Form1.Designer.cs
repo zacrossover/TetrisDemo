@@ -32,7 +32,6 @@
             picBackGround = new PictureBox();
             pic_preView = new PictureBox();
             label1 = new Label();
-            label2 = new Label();
             t_score = new Label();
             menuStrip1 = new MenuStrip();
             游戏设置ToolStripMenuItem = new ToolStripMenuItem();
@@ -57,17 +56,19 @@
             操作说明ToolStripMenuItem = new ToolStripMenuItem();
             timer1 = new System.Windows.Forms.Timer(components);
             msg = new Label();
+            groupBox1 = new GroupBox();
             ((System.ComponentModel.ISupportInitialize)picBackGround).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pic_preView).BeginInit();
             menuStrip1.SuspendLayout();
+            groupBox1.SuspendLayout();
             SuspendLayout();
             // 
             // picBackGround
             // 
-            picBackGround.BackColor = Color.Tan;
+            picBackGround.BackColor = Color.Gainsboro;
             picBackGround.BorderStyle = BorderStyle.FixedSingle;
-            picBackGround.Location = new Point(14, 55);
-            picBackGround.Margin = new Padding(4, 4, 4, 4);
+            picBackGround.Location = new Point(13, 31);
+            picBackGround.Margin = new Padding(4);
             picBackGround.Name = "picBackGround";
             picBackGround.Size = new Size(300, 450);
             picBackGround.TabIndex = 0;
@@ -75,9 +76,9 @@
             // 
             // pic_preView
             // 
-            pic_preView.BackColor = Color.Khaki;
-            pic_preView.Location = new Point(384, 205);
-            pic_preView.Margin = new Padding(4, 4, 4, 4);
+            pic_preView.BackColor = Color.Gainsboro;
+            pic_preView.Location = new Point(379, 304);
+            pic_preView.Margin = new Padding(4);
             pic_preView.Name = "pic_preView";
             pic_preView.Size = new Size(217, 177);
             pic_preView.TabIndex = 2;
@@ -88,34 +89,22 @@
             label1.AutoSize = true;
             label1.Font = new Font("宋体", 9F, FontStyle.Bold, GraphicsUnit.Point);
             label1.ForeColor = Color.Black;
-            label1.Location = new Point(379, 174);
+            label1.Location = new Point(379, 276);
             label1.Margin = new Padding(4, 0, 4, 0);
             label1.Name = "label1";
             label1.Size = new Size(57, 12);
             label1.TabIndex = 3;
             label1.Text = "下一个：";
             // 
-            // label2
-            // 
-            label2.AutoSize = true;
-            label2.Font = new Font("宋体", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            label2.ForeColor = Color.Black;
-            label2.Location = new Point(380, 78);
-            label2.Margin = new Padding(4, 0, 4, 0);
-            label2.Name = "label2";
-            label2.Size = new Size(44, 12);
-            label2.TabIndex = 3;
-            label2.Text = "分数：";
-            // 
             // t_score
             // 
             t_score.AutoSize = true;
-            t_score.Font = new Font("宋体", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            t_score.Font = new Font("楷体", 15.75F, FontStyle.Regular, GraphicsUnit.Point);
             t_score.ForeColor = Color.Green;
-            t_score.Location = new Point(408, 122);
+            t_score.Location = new Point(101, 51);
             t_score.Margin = new Padding(4, 0, 4, 0);
             t_score.Name = "t_score";
-            t_score.Size = new Size(15, 16);
+            t_score.Size = new Size(21, 21);
             t_score.TabIndex = 4;
             t_score.Text = "0";
             // 
@@ -295,13 +284,25 @@
             msg.TabIndex = 7;
             msg.Text = "msg";
             // 
+            // groupBox1
+            // 
+            groupBox1.BackColor = SystemColors.ControlLight;
+            groupBox1.Controls.Add(t_score);
+            groupBox1.Location = new Point(379, 144);
+            groupBox1.Name = "groupBox1";
+            groupBox1.RightToLeft = RightToLeft.No;
+            groupBox1.Size = new Size(217, 109);
+            groupBox1.TabIndex = 8;
+            groupBox1.TabStop = false;
+            groupBox1.Text = "分数";
+            groupBox1.Enter += groupBox1_Enter;
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 17F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(616, 711);
-            Controls.Add(t_score);
-            Controls.Add(label2);
+            Controls.Add(groupBox1);
             Controls.Add(label1);
             Controls.Add(pic_preView);
             Controls.Add(menuStrip1);
@@ -309,10 +310,10 @@
             Controls.Add(msg);
             KeyPreview = true;
             MainMenuStrip = menuStrip1;
-            Margin = new Padding(4, 4, 4, 4);
+            Margin = new Padding(4);
             Name = "Form1";
             StartPosition = FormStartPosition.CenterScreen;
-            Text = "C#版俄罗斯方块（小y设计）";
+            Text = "俄罗斯方块";
             Activated += Form1_Activated;
             FormClosing += Form1_FormClosing;
             Load += Form1_Load;
@@ -321,6 +322,8 @@
             ((System.ComponentModel.ISupportInitialize)pic_preView).EndInit();
             menuStrip1.ResumeLayout(false);
             menuStrip1.PerformLayout();
+            groupBox1.ResumeLayout(false);
+            groupBox1.PerformLayout();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -330,7 +333,6 @@
         private System.Windows.Forms.PictureBox picBackGround;
         private System.Windows.Forms.PictureBox pic_preView;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label t_score;
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStripMenuItem 游戏设置ToolStripMenuItem;
@@ -355,6 +357,6 @@
         private System.Windows.Forms.ToolStripMenuItem 较快ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem 非常快ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem 恢复默认设置ToolStripMenuItem;
-
+        private GroupBox groupBox1;
     }
 }
