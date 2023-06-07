@@ -28,239 +28,256 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.pictureBox2 = new System.Windows.Forms.PictureBox();
-            this.pictureBox3 = new System.Windows.Forms.PictureBox();
-            this.pictureBox4 = new System.Windows.Forms.PictureBox();
-            this.pictureBox5 = new System.Windows.Forms.PictureBox();
-            this.pictureBox6 = new System.Windows.Forms.PictureBox();
-            this.pictureBox7 = new System.Windows.Forms.PictureBox();
-            this.label2 = new System.Windows.Forms.Label();
-            this.pic_preView = new System.Windows.Forms.PictureBox();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.p_foreColor = new System.Windows.Forms.PictureBox();
-            this.p_backColor = new System.Windows.Forms.PictureBox();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.label5 = new System.Windows.Forms.Label();
-            this.colorDialog1 = new System.Windows.Forms.ColorDialog();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox7)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pic_preView)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.p_foreColor)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.p_backColor)).BeginInit();
-            this.SuspendLayout();
+            pictureBox1 = new PictureBox();
+            label1 = new Label();
+            pictureBox2 = new PictureBox();
+            pictureBox3 = new PictureBox();
+            pictureBox4 = new PictureBox();
+            pictureBox5 = new PictureBox();
+            pictureBox6 = new PictureBox();
+            pictureBox7 = new PictureBox();
+            label2 = new Label();
+            pic_preView = new PictureBox();
+            label3 = new Label();
+            label4 = new Label();
+            p_foreColor = new PictureBox();
+            p_backColor = new PictureBox();
+            button1 = new Button();
+            button2 = new Button();
+            label5 = new Label();
+            colorDialog1 = new ColorDialog();
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox3).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox4).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox5).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox6).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox7).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)pic_preView).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)p_foreColor).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)p_backColor).BeginInit();
+            SuspendLayout();
             // 
             // pictureBox1
             // 
-            this.pictureBox1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pictureBox1.Location = new System.Drawing.Point(14, 45);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(100, 85);
-            this.pictureBox1.TabIndex = 0;
-            this.pictureBox1.TabStop = false;
-            this.pictureBox1.Click += new System.EventHandler(this.pictureBox_Click);
+            pictureBox1.BorderStyle = BorderStyle.FixedSingle;
+            pictureBox1.Location = new Point(16, 64);
+            pictureBox1.Margin = new Padding(4, 4, 4, 4);
+            pictureBox1.Name = "pictureBox1";
+            pictureBox1.Size = new Size(116, 120);
+            pictureBox1.TabIndex = 0;
+            pictureBox1.TabStop = false;
+            pictureBox1.Click += pictureBox_Click;
             // 
             // label1
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(12, 18);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(125, 12);
-            this.label1.TabIndex = 1;
-            this.label1.Text = "所有的方块配色方案：";
+            label1.AutoSize = true;
+            label1.Location = new Point(14, 26);
+            label1.Margin = new Padding(4, 0, 4, 0);
+            label1.Name = "label1";
+            label1.Size = new Size(128, 17);
+            label1.TabIndex = 1;
+            label1.Text = "所有的方块配色方案：";
             // 
             // pictureBox2
             // 
-            this.pictureBox2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pictureBox2.Location = new System.Drawing.Point(132, 45);
-            this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(100, 85);
-            this.pictureBox2.TabIndex = 0;
-            this.pictureBox2.TabStop = false;
-            this.pictureBox2.Click += new System.EventHandler(this.pictureBox_Click);
+            pictureBox2.BorderStyle = BorderStyle.FixedSingle;
+            pictureBox2.Location = new Point(154, 64);
+            pictureBox2.Margin = new Padding(4, 4, 4, 4);
+            pictureBox2.Name = "pictureBox2";
+            pictureBox2.Size = new Size(116, 120);
+            pictureBox2.TabIndex = 0;
+            pictureBox2.TabStop = false;
+            pictureBox2.Click += pictureBox_Click;
             // 
             // pictureBox3
             // 
-            this.pictureBox3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pictureBox3.Location = new System.Drawing.Point(250, 45);
-            this.pictureBox3.Name = "pictureBox3";
-            this.pictureBox3.Size = new System.Drawing.Size(100, 85);
-            this.pictureBox3.TabIndex = 0;
-            this.pictureBox3.TabStop = false;
-            this.pictureBox3.Click += new System.EventHandler(this.pictureBox_Click);
+            pictureBox3.BorderStyle = BorderStyle.FixedSingle;
+            pictureBox3.Location = new Point(292, 64);
+            pictureBox3.Margin = new Padding(4, 4, 4, 4);
+            pictureBox3.Name = "pictureBox3";
+            pictureBox3.Size = new Size(116, 120);
+            pictureBox3.TabIndex = 0;
+            pictureBox3.TabStop = false;
+            pictureBox3.Click += pictureBox_Click;
             // 
             // pictureBox4
             // 
-            this.pictureBox4.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pictureBox4.Location = new System.Drawing.Point(368, 45);
-            this.pictureBox4.Name = "pictureBox4";
-            this.pictureBox4.Size = new System.Drawing.Size(100, 85);
-            this.pictureBox4.TabIndex = 0;
-            this.pictureBox4.TabStop = false;
-            this.pictureBox4.Click += new System.EventHandler(this.pictureBox_Click);
+            pictureBox4.BorderStyle = BorderStyle.FixedSingle;
+            pictureBox4.Location = new Point(429, 64);
+            pictureBox4.Margin = new Padding(4, 4, 4, 4);
+            pictureBox4.Name = "pictureBox4";
+            pictureBox4.Size = new Size(116, 120);
+            pictureBox4.TabIndex = 0;
+            pictureBox4.TabStop = false;
+            pictureBox4.Click += pictureBox_Click;
             // 
             // pictureBox5
             // 
-            this.pictureBox5.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pictureBox5.Location = new System.Drawing.Point(14, 154);
-            this.pictureBox5.Name = "pictureBox5";
-            this.pictureBox5.Size = new System.Drawing.Size(100, 85);
-            this.pictureBox5.TabIndex = 0;
-            this.pictureBox5.TabStop = false;
-            this.pictureBox5.Click += new System.EventHandler(this.pictureBox_Click);
+            pictureBox5.BorderStyle = BorderStyle.FixedSingle;
+            pictureBox5.Location = new Point(16, 218);
+            pictureBox5.Margin = new Padding(4, 4, 4, 4);
+            pictureBox5.Name = "pictureBox5";
+            pictureBox5.Size = new Size(116, 120);
+            pictureBox5.TabIndex = 0;
+            pictureBox5.TabStop = false;
+            pictureBox5.Click += pictureBox_Click;
             // 
             // pictureBox6
             // 
-            this.pictureBox6.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pictureBox6.Location = new System.Drawing.Point(132, 154);
-            this.pictureBox6.Name = "pictureBox6";
-            this.pictureBox6.Size = new System.Drawing.Size(100, 85);
-            this.pictureBox6.TabIndex = 0;
-            this.pictureBox6.TabStop = false;
-            this.pictureBox6.Click += new System.EventHandler(this.pictureBox_Click);
+            pictureBox6.BorderStyle = BorderStyle.FixedSingle;
+            pictureBox6.Location = new Point(154, 218);
+            pictureBox6.Margin = new Padding(4, 4, 4, 4);
+            pictureBox6.Name = "pictureBox6";
+            pictureBox6.Size = new Size(116, 120);
+            pictureBox6.TabIndex = 0;
+            pictureBox6.TabStop = false;
+            pictureBox6.Click += pictureBox_Click;
             // 
             // pictureBox7
             // 
-            this.pictureBox7.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pictureBox7.Location = new System.Drawing.Point(250, 154);
-            this.pictureBox7.Name = "pictureBox7";
-            this.pictureBox7.Size = new System.Drawing.Size(100, 85);
-            this.pictureBox7.TabIndex = 0;
-            this.pictureBox7.TabStop = false;
-            this.pictureBox7.Click += new System.EventHandler(this.pictureBox_Click);
+            pictureBox7.BorderStyle = BorderStyle.FixedSingle;
+            pictureBox7.Location = new Point(292, 218);
+            pictureBox7.Margin = new Padding(4, 4, 4, 4);
+            pictureBox7.Name = "pictureBox7";
+            pictureBox7.Size = new Size(116, 120);
+            pictureBox7.TabIndex = 0;
+            pictureBox7.TabStop = false;
+            pictureBox7.Click += pictureBox_Click;
             // 
             // label2
             // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(12, 272);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(125, 12);
-            this.label2.TabIndex = 2;
-            this.label2.Text = "正在编辑的方块预览：";
+            label2.AutoSize = true;
+            label2.Location = new Point(14, 385);
+            label2.Margin = new Padding(4, 0, 4, 0);
+            label2.Name = "label2";
+            label2.Size = new Size(128, 17);
+            label2.TabIndex = 2;
+            label2.Text = "正在编辑的方块预览：";
             // 
             // pic_preView
             // 
-            this.pic_preView.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pic_preView.Location = new System.Drawing.Point(14, 298);
-            this.pic_preView.Name = "pic_preView";
-            this.pic_preView.Size = new System.Drawing.Size(141, 125);
-            this.pic_preView.TabIndex = 0;
-            this.pic_preView.TabStop = false;
+            pic_preView.BorderStyle = BorderStyle.FixedSingle;
+            pic_preView.Location = new Point(16, 422);
+            pic_preView.Margin = new Padding(4, 4, 4, 4);
+            pic_preView.Name = "pic_preView";
+            pic_preView.Size = new Size(164, 176);
+            pic_preView.TabIndex = 0;
+            pic_preView.TabStop = false;
             // 
             // label3
             // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(173, 311);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(53, 12);
-            this.label3.TabIndex = 3;
-            this.label3.Text = "前景色：";
+            label3.AutoSize = true;
+            label3.Location = new Point(237, 422);
+            label3.Margin = new Padding(4, 0, 4, 0);
+            label3.Name = "label3";
+            label3.Size = new Size(56, 17);
+            label3.TabIndex = 3;
+            label3.Text = "前景色：";
             // 
             // label4
             // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(173, 361);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(53, 12);
-            this.label4.TabIndex = 3;
-            this.label4.Text = "背景色：";
+            label4.AutoSize = true;
+            label4.Location = new Point(405, 422);
+            label4.Margin = new Padding(4, 0, 4, 0);
+            label4.Name = "label4";
+            label4.Size = new Size(56, 17);
+            label4.TabIndex = 3;
+            label4.Text = "背景色：";
             // 
             // p_foreColor
             // 
-            this.p_foreColor.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.p_foreColor.Location = new System.Drawing.Point(232, 311);
-            this.p_foreColor.Name = "p_foreColor";
-            this.p_foreColor.Size = new System.Drawing.Size(30, 30);
-            this.p_foreColor.TabIndex = 4;
-            this.p_foreColor.TabStop = false;
-            this.p_foreColor.Click += new System.EventHandler(this.p_foreColor_Click);
+            p_foreColor.BorderStyle = BorderStyle.FixedSingle;
+            p_foreColor.Location = new Point(301, 422);
+            p_foreColor.Margin = new Padding(4, 4, 4, 4);
+            p_foreColor.Name = "p_foreColor";
+            p_foreColor.Size = new Size(35, 42);
+            p_foreColor.TabIndex = 4;
+            p_foreColor.TabStop = false;
+            p_foreColor.Click += p_foreColor_Click;
             // 
             // p_backColor
             // 
-            this.p_backColor.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.p_backColor.Location = new System.Drawing.Point(232, 361);
-            this.p_backColor.Name = "p_backColor";
-            this.p_backColor.Size = new System.Drawing.Size(30, 30);
-            this.p_backColor.TabIndex = 4;
-            this.p_backColor.TabStop = false;
-            this.p_backColor.Click += new System.EventHandler(this.p_backColor_Click);
+            p_backColor.BorderStyle = BorderStyle.FixedSingle;
+            p_backColor.Location = new Point(475, 422);
+            p_backColor.Margin = new Padding(4, 4, 4, 4);
+            p_backColor.Name = "p_backColor";
+            p_backColor.Size = new Size(35, 42);
+            p_backColor.TabIndex = 4;
+            p_backColor.TabStop = false;
+            p_backColor.Click += p_backColor_Click;
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(298, 332);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 30);
-            this.button1.TabIndex = 5;
-            this.button1.Text = "保 存";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            button1.Location = new Point(320, 515);
+            button1.Margin = new Padding(4, 4, 4, 4);
+            button1.Name = "button1";
+            button1.Size = new Size(88, 42);
+            button1.TabIndex = 5;
+            button1.Text = "保 存";
+            button1.UseVisualStyleBackColor = true;
+            button1.Click += button1_Click;
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(391, 332);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(75, 30);
-            this.button2.TabIndex = 5;
-            this.button2.Text = "关 闭";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
+            button2.Location = new Point(429, 515);
+            button2.Margin = new Padding(4, 4, 4, 4);
+            button2.Name = "button2";
+            button2.Size = new Size(88, 42);
+            button2.TabIndex = 5;
+            button2.Text = "关 闭";
+            button2.UseVisualStyleBackColor = true;
+            button2.Click += button2_Click;
             // 
             // label5
             // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(173, 407);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(305, 12);
-            this.label5.TabIndex = 6;
-            this.label5.Text = "注：每编辑好一个方块后点击保存，颜色方案才会生效。";
+            label5.AutoSize = true;
+            label5.Location = new Point(202, 577);
+            label5.Margin = new Padding(4, 0, 4, 0);
+            label5.Name = "label5";
+            label5.Size = new Size(308, 17);
+            label5.TabIndex = 6;
+            label5.Text = "注：每编辑好一个方块后点击保存，颜色方案才会生效。";
             // 
             // setBlockColor
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(486, 435);
-            this.Controls.Add(this.label5);
-            this.Controls.Add(this.button2);
-            this.Controls.Add(this.button1);
-            this.Controls.Add(this.p_backColor);
-            this.Controls.Add(this.p_foreColor);
-            this.Controls.Add(this.label4);
-            this.Controls.Add(this.label3);
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.label1);
-            this.Controls.Add(this.pic_preView);
-            this.Controls.Add(this.pictureBox7);
-            this.Controls.Add(this.pictureBox6);
-            this.Controls.Add(this.pictureBox5);
-            this.Controls.Add(this.pictureBox4);
-            this.Controls.Add(this.pictureBox3);
-            this.Controls.Add(this.pictureBox2);
-            this.Controls.Add(this.pictureBox1);
-            this.Name = "setBlockColor";
-            this.Text = "设置方块的颜色";
-            this.Paint += new System.Windows.Forms.PaintEventHandler(this.setBlockColor_Paint);
-            this.Load += new System.EventHandler(this.setBlockColor_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox7)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pic_preView)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.p_foreColor)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.p_backColor)).EndInit();
-            this.ResumeLayout(false);
-            this.PerformLayout();
-
+            AutoScaleDimensions = new SizeF(7F, 17F);
+            AutoScaleMode = AutoScaleMode.Font;
+            ClientSize = new Size(567, 616);
+            Controls.Add(label5);
+            Controls.Add(button2);
+            Controls.Add(button1);
+            Controls.Add(p_backColor);
+            Controls.Add(p_foreColor);
+            Controls.Add(label4);
+            Controls.Add(label3);
+            Controls.Add(label2);
+            Controls.Add(label1);
+            Controls.Add(pic_preView);
+            Controls.Add(pictureBox7);
+            Controls.Add(pictureBox6);
+            Controls.Add(pictureBox5);
+            Controls.Add(pictureBox4);
+            Controls.Add(pictureBox3);
+            Controls.Add(pictureBox2);
+            Controls.Add(pictureBox1);
+            Margin = new Padding(4, 4, 4, 4);
+            Name = "setBlockColor";
+            Text = "设置方块的颜色";
+            Load += setBlockColor_Load;
+            Paint += setBlockColor_Paint;
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox2).EndInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox3).EndInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox4).EndInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox5).EndInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox6).EndInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox7).EndInit();
+            ((System.ComponentModel.ISupportInitialize)pic_preView).EndInit();
+            ((System.ComponentModel.ISupportInitialize)p_foreColor).EndInit();
+            ((System.ComponentModel.ISupportInitialize)p_backColor).EndInit();
+            ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
