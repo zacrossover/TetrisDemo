@@ -21,5 +21,10 @@ namespace TetrisDemo
         {
             Process.Start("iexplore.exe", "http://tuyile006.cnblogs.com");
         }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
