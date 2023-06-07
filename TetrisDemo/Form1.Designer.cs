@@ -309,24 +309,29 @@
             button1.TabIndex = 9;
             button1.Text = "开始";
             button1.UseVisualStyleBackColor = true;
+            button1.Click += button1_Click;
             // 
             // button2
             // 
+            button2.Enabled = false;
             button2.Location = new Point(379, 385);
             button2.Name = "button2";
             button2.Size = new Size(217, 32);
             button2.TabIndex = 10;
             button2.Text = "暂停";
             button2.UseVisualStyleBackColor = true;
+            button2.Click += button2_Click;
             // 
             // button3
             // 
+            button3.Enabled = false;
             button3.Location = new Point(379, 435);
             button3.Name = "button3";
             button3.Size = new Size(102, 37);
             button3.TabIndex = 11;
             button3.Text = "结束";
             button3.UseVisualStyleBackColor = true;
+            button3.Click += button3_Click;
             // 
             // button4
             // 
@@ -336,6 +341,7 @@
             button4.TabIndex = 12;
             button4.Text = "重新开始";
             button4.UseVisualStyleBackColor = true;
+            button4.Click += button4_Click;
             // 
             // Form1
             // 

@@ -168,6 +168,9 @@ namespace TetrisDemo
             开始ToolStripMenuItem.Enabled = false;
             暂停ToolStripMenuItem1.Enabled = true;
             结束ToolStripMenuItem.Enabled = true;
+            button1.Enabled = false;
+            button2.Enabled = true;
+            button3.Enabled = true;
             if (currentBlock == null)
             {//第一次开始
                 currentBlock = new Block(startLocation, Block.BlockTypes.undefined);
@@ -190,6 +193,8 @@ namespace TetrisDemo
             showMsg("暂 停");
             开始ToolStripMenuItem.Enabled = true;
             暂停ToolStripMenuItem1.Enabled = false;
+            button1.Enabled = true;
+            button2.Enabled = false;
         }
 
         /*结束游戏*/
@@ -202,6 +207,9 @@ namespace TetrisDemo
             结束ToolStripMenuItem.Enabled = false;
             暂停ToolStripMenuItem1.Enabled = false;
             开始ToolStripMenuItem.Enabled = true;
+            button1.Enabled = true;
+            button2.Enabled = false;
+            button3.Enabled = false;
             picBackGround.Refresh();
             pic_preView.Refresh();
         }
@@ -327,6 +335,59 @@ namespace TetrisDemo
         private void label2_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            beginGame();
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            timer1.Enabled = false;
+            showMsg("暂 停");
+            开始ToolStripMenuItem.Enabled = true;
+            暂停ToolStripMenuItem1.Enabled = false;
+            button1.Enabled = true;
+            button2.Enabled = false;
+
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            stillRuning = false;
+            timer1.Stop();
+            currentBlock = null;
+            showMsg("结 束");
+            结束ToolStripMenuItem.Enabled = false;
+            暂停ToolStripMenuItem1.Enabled = false;
+            开始ToolStripMenuItem.Enabled = true;
+            button1.Enabled = true;
+            button2.Enabled = false;
+            button3.Enabled = false;
+            picBackGround.Refresh();
+            pic_preView.Refresh();
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            timer1.Stop();
+            picBackGround.Refresh();   //刷新游戏区
+            pic_preView.Refresh();     //刷新预览区
+            GameField.arriveBlock = new Square[GameField.width, GameField.height]; //清空所有小方块
+            GameField.arrBitBlock = new int[GameField.height];
+            score = 0;           //重新计算积分
+            t_score.Text = "0";
+            msg.SendToBack();   //将提示窗口隐藏
+            currentBlock = new Block(startLocation, Block.BlockTypes.undefined);
+            currentBlock.Draw(GameField.winHandle);
+            nextBlock = new Block(new Point(80, 50), Block.BlockTypes.undefined);
+            nextBlock.Draw(pic_preView.Handle);
+            开始ToolStripMenuItem.Enabled = false;
+            暂停ToolStripMenuItem1.Enabled = true;
+            结束ToolStripMenuItem.Enabled = true;
+            stillRuning = true;
+            timer1.Start();
         }
     }
 }
