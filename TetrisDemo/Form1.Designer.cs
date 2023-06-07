@@ -219,6 +219,7 @@
             控制ToolStripMenuItem.Name = "控制ToolStripMenuItem";
             控制ToolStripMenuItem.Size = new Size(44, 21);
             控制ToolStripMenuItem.Text = "控制";
+            控制ToolStripMenuItem.Visible = false;
             // 
             // 开始ToolStripMenuItem
             // 
@@ -260,14 +261,14 @@
             // 关于ToolStripMenuItem
             // 
             关于ToolStripMenuItem.Name = "关于ToolStripMenuItem";
-            关于ToolStripMenuItem.Size = new Size(180, 22);
+            关于ToolStripMenuItem.Size = new Size(124, 22);
             关于ToolStripMenuItem.Text = "关于";
             关于ToolStripMenuItem.Click += 关于ToolStripMenuItem_Click;
             // 
             // 操作说明ToolStripMenuItem
             // 
             操作说明ToolStripMenuItem.Name = "操作说明ToolStripMenuItem";
-            操作说明ToolStripMenuItem.Size = new Size(180, 22);
+            操作说明ToolStripMenuItem.Size = new Size(124, 22);
             操作说明ToolStripMenuItem.Text = "操作说明";
             操作说明ToolStripMenuItem.Click += 操作说明ToolStripMenuItem_Click;
             // 
@@ -308,6 +309,7 @@
             button1.Name = "button1";
             button1.Size = new Size(217, 34);
             button1.TabIndex = 9;
+            button1.TabStop = false;
             button1.Text = "开始";
             button1.UseVisualStyleBackColor = true;
             button1.Click += button1_Click;
@@ -319,6 +321,7 @@
             button2.Name = "button2";
             button2.Size = new Size(217, 32);
             button2.TabIndex = 10;
+            button2.TabStop = false;
             button2.Text = "暂停";
             button2.UseVisualStyleBackColor = true;
             button2.Click += button2_Click;
@@ -330,6 +333,7 @@
             button3.Name = "button3";
             button3.Size = new Size(102, 37);
             button3.TabIndex = 11;
+            button3.TabStop = false;
             button3.Text = "结束";
             button3.UseVisualStyleBackColor = true;
             button3.Click += button3_Click;
@@ -340,6 +344,7 @@
             button4.Name = "button4";
             button4.Size = new Size(98, 37);
             button4.TabIndex = 12;
+            button4.TabStop = false;
             button4.Text = "重新开始";
             button4.UseVisualStyleBackColor = true;
             button4.Click += button4_Click;

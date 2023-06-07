@@ -83,6 +83,20 @@ namespace TetrisDemo
             return result;
         }
 
+        /// <summary>
+        /// 很重要，重写键盘响应，否则方向键无法控制方块
+        /// </summary>
+        /// <param name="keyData"></param>
+        /// <returns></returns>
+        protected override bool ProcessDialogKey(Keys keyData)
+        {
+            if (keyData == Keys.Up || keyData == Keys.Down || keyData == Keys.Left || keyData == Keys.Right)
+            {
+                return false;
+            }
+            return base.ProcessDialogKey(keyData);
+        }
+
         /*键盘操作*/
         private void Form1_KeyDown(object sender, KeyEventArgs e)
         {
