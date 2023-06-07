@@ -57,6 +57,10 @@
             timer1 = new System.Windows.Forms.Timer(components);
             msg = new Label();
             groupBox1 = new GroupBox();
+            button1 = new Button();
+            button2 = new Button();
+            button3 = new Button();
+            button4 = new Button();
             ((System.ComponentModel.ISupportInitialize)picBackGround).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pic_preView).BeginInit();
             menuStrip1.SuspendLayout();
@@ -77,7 +81,7 @@
             // pic_preView
             // 
             pic_preView.BackColor = Color.Gainsboro;
-            pic_preView.Location = new Point(379, 304);
+            pic_preView.Location = new Point(379, 61);
             pic_preView.Margin = new Padding(4);
             pic_preView.Name = "pic_preView";
             pic_preView.Size = new Size(217, 177);
@@ -89,7 +93,7 @@
             label1.AutoSize = true;
             label1.Font = new Font("宋体", 9F, FontStyle.Bold, GraphicsUnit.Point);
             label1.ForeColor = Color.Black;
-            label1.Location = new Point(379, 276);
+            label1.Location = new Point(379, 31);
             label1.Margin = new Padding(4, 0, 4, 0);
             label1.Name = "label1";
             label1.Size = new Size(57, 12);
@@ -101,7 +105,7 @@
             t_score.AutoSize = true;
             t_score.Font = new Font("楷体", 15.75F, FontStyle.Regular, GraphicsUnit.Point);
             t_score.ForeColor = Color.Green;
-            t_score.Location = new Point(101, 51);
+            t_score.Location = new Point(100, 19);
             t_score.Margin = new Padding(4, 0, 4, 0);
             t_score.Name = "t_score";
             t_score.Size = new Size(21, 21);
@@ -218,7 +222,7 @@
             // 开始ToolStripMenuItem
             // 
             开始ToolStripMenuItem.Name = "开始ToolStripMenuItem";
-            开始ToolStripMenuItem.Size = new Size(124, 22);
+            开始ToolStripMenuItem.Size = new Size(180, 22);
             开始ToolStripMenuItem.Text = "开始";
             开始ToolStripMenuItem.Click += 开始ToolStripMenuItem1_Click;
             // 
@@ -226,7 +230,7 @@
             // 
             暂停ToolStripMenuItem1.Enabled = false;
             暂停ToolStripMenuItem1.Name = "暂停ToolStripMenuItem1";
-            暂停ToolStripMenuItem1.Size = new Size(124, 22);
+            暂停ToolStripMenuItem1.Size = new Size(180, 22);
             暂停ToolStripMenuItem1.Text = "暂停";
             暂停ToolStripMenuItem1.Click += 暂停ToolStripMenuItem1_Click;
             // 
@@ -234,14 +238,14 @@
             // 
             结束ToolStripMenuItem.Enabled = false;
             结束ToolStripMenuItem.Name = "结束ToolStripMenuItem";
-            结束ToolStripMenuItem.Size = new Size(124, 22);
+            结束ToolStripMenuItem.Size = new Size(180, 22);
             结束ToolStripMenuItem.Text = "结束";
             结束ToolStripMenuItem.Click += 结束ToolStripMenuItem_Click;
             // 
             // 重新开始ToolStripMenuItem
             // 
             重新开始ToolStripMenuItem.Name = "重新开始ToolStripMenuItem";
-            重新开始ToolStripMenuItem.Size = new Size(124, 22);
+            重新开始ToolStripMenuItem.Size = new Size(180, 22);
             重新开始ToolStripMenuItem.Text = "重新开始";
             重新开始ToolStripMenuItem.Click += 重新开始ToolStripMenuItem_Click;
             // 
@@ -288,20 +292,60 @@
             // 
             groupBox1.BackColor = SystemColors.ControlLight;
             groupBox1.Controls.Add(t_score);
-            groupBox1.Location = new Point(379, 144);
+            groupBox1.Location = new Point(379, 259);
             groupBox1.Name = "groupBox1";
             groupBox1.RightToLeft = RightToLeft.No;
-            groupBox1.Size = new Size(217, 109);
+            groupBox1.Size = new Size(217, 50);
             groupBox1.TabIndex = 8;
             groupBox1.TabStop = false;
             groupBox1.Text = "分数";
             groupBox1.Enter += groupBox1_Enter;
+            // 
+            // button1
+            // 
+            button1.Location = new Point(379, 332);
+            button1.Name = "button1";
+            button1.Size = new Size(217, 34);
+            button1.TabIndex = 9;
+            button1.Text = "开始";
+            button1.UseVisualStyleBackColor = true;
+            // 
+            // button2
+            // 
+            button2.Location = new Point(379, 385);
+            button2.Name = "button2";
+            button2.Size = new Size(217, 32);
+            button2.TabIndex = 10;
+            button2.Text = "暂停";
+            button2.UseVisualStyleBackColor = true;
+            // 
+            // button3
+            // 
+            button3.Location = new Point(379, 435);
+            button3.Name = "button3";
+            button3.Size = new Size(102, 37);
+            button3.TabIndex = 11;
+            button3.Text = "结束";
+            button3.UseVisualStyleBackColor = true;
+            // 
+            // button4
+            // 
+            button4.Location = new Point(498, 435);
+            button4.Name = "button4";
+            button4.Size = new Size(98, 37);
+            button4.TabIndex = 12;
+            button4.Text = "重新开始";
+            button4.UseVisualStyleBackColor = true;
             // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 17F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(616, 711);
+            Controls.Add(button4);
+            Controls.Add(button3);
+            Controls.Add(button2);
+            Controls.Add(button1);
             Controls.Add(groupBox1);
             Controls.Add(label1);
             Controls.Add(pic_preView);
@@ -358,5 +402,9 @@
         private System.Windows.Forms.ToolStripMenuItem 非常快ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem 恢复默认设置ToolStripMenuItem;
         private GroupBox groupBox1;
+        private Button button1;
+        private Button button2;
+        private Button button3;
+        private Button button4;
     }
 }
