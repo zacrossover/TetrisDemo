@@ -332,8 +332,8 @@ namespace TetrisDemo
         }
         private void ª÷∏¥ƒ¨»œ…Ë÷√ToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            GameField.BackColor = Color.Tan;
-            picBackGround.BackColor = Color.Tan;
+            GameField.BackColor = Color.Gainsboro;
+            picBackGround.BackColor = Color.Gainsboro;
             GameField.BlockForeColor = new Color[] { Color.Blue, Color.Beige, Color.DarkKhaki, Color.DarkMagenta, Color.DarkOliveGreen, Color.DarkOrange, Color.DarkRed };
             GameField.BlockBackColor = new Color[] { Color.LightCyan, Color.DarkSeaGreen, Color.Beige, Color.Beige, Color.Beige, Color.Beige, Color.Beige };
             saveSettings();
