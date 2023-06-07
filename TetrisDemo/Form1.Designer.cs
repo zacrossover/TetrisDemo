@@ -70,7 +70,7 @@
             // picBackGround
             // 
             picBackGround.BackColor = Color.Gainsboro;
-            picBackGround.BorderStyle = BorderStyle.FixedSingle;
+            picBackGround.BorderStyle = BorderStyle.Fixed3D;
             picBackGround.Location = new Point(13, 31);
             picBackGround.Margin = new Padding(4);
             picBackGround.Name = "picBackGround";
@@ -81,6 +81,7 @@
             // pic_preView
             // 
             pic_preView.BackColor = Color.Gainsboro;
+            pic_preView.BorderStyle = BorderStyle.Fixed3D;
             pic_preView.Location = new Point(379, 61);
             pic_preView.Margin = new Padding(4);
             pic_preView.Name = "pic_preView";
@@ -259,14 +260,14 @@
             // 关于ToolStripMenuItem
             // 
             关于ToolStripMenuItem.Name = "关于ToolStripMenuItem";
-            关于ToolStripMenuItem.Size = new Size(124, 22);
+            关于ToolStripMenuItem.Size = new Size(180, 22);
             关于ToolStripMenuItem.Text = "关于";
             关于ToolStripMenuItem.Click += 关于ToolStripMenuItem_Click;
             // 
             // 操作说明ToolStripMenuItem
             // 
             操作说明ToolStripMenuItem.Name = "操作说明ToolStripMenuItem";
-            操作说明ToolStripMenuItem.Size = new Size(124, 22);
+            操作说明ToolStripMenuItem.Size = new Size(180, 22);
             操作说明ToolStripMenuItem.Text = "操作说明";
             操作说明ToolStripMenuItem.Click += 操作说明ToolStripMenuItem_Click;
             // 
