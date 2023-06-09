@@ -404,7 +404,7 @@ namespace TetrisDemo
             stillRuning = true;
             timer1.Start();
         }
-        private Block createBlock(Point loc, BlockTypes blockTypes)
+        public Block createBlock(Point loc, BlockTypes blockTypes)
         {
             Random rand = new Random();
             if (blockTypes == BlockTypes.undefined)
@@ -437,6 +437,44 @@ namespace TetrisDemo
                     break;
                 default:
                     block = new BlockO(loc);
+                    break;
+            }
+            return block;
+        }
+
+        public Block createBlock(Point loc, BlockTypes blockTypes, Color c1, Color c2)
+        {
+            Random rand = new Random();
+            if (blockTypes == BlockTypes.undefined)
+            {
+                blockTypes = (BlockTypes)(rand.Next(7) + 1);
+            }
+            Block block;
+            switch (blockTypes)
+            {
+                case BlockTypes.square:
+                    block = new BlockO(loc, c1, c2);
+                    break;
+                case BlockTypes.line:
+                    block = new BlockI(loc, c1, c2);
+                    break;
+                case BlockTypes.T:
+                    block = new BlockT(loc, c1, c2);
+                    break;
+                case BlockTypes.J:
+                    block = new BlockJ(loc, c1, c2);
+                    break;
+                case BlockTypes.L:
+                    block = new BlockL(loc, c1, c2);
+                    break;
+                case BlockTypes.Z:
+                    block = new BlockZ(loc, c1, c2);
+                    break;
+                case BlockTypes.S:
+                    block = new BlockS(loc, c1, c2);
+                    break;
+                default:
+                    block = new BlockO(loc, c1, c2);
                     break;
             }
             return block;

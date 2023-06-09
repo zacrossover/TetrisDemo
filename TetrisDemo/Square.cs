@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace TetrisDemo
 {
-    internal class Square
+    public class Square
     {
         public Point location;
         public Size size;

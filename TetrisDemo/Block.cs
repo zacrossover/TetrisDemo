@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace TetrisDemo
 {
-    internal abstract class Block
+    public abstract class Block
     {
         public Square square1;  //组成block的四个小方块
         public Square square2;

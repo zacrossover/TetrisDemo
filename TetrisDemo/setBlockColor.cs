@@ -12,6 +12,7 @@ namespace TetrisDemo
 {
     public partial class setBlockColor : Form
     {
+        Form1 form1 = new Form1();
         public setBlockColor()
         {
             InitializeComponent();
@@ -79,7 +80,7 @@ namespace TetrisDemo
             pic_preView.Refresh();
             pic_preView.BackColor = gameFieldBgC;
             Application.DoEvents();
-            someBlock = new Block(new Point(45, 40), (Block.BlockTypes)currentBlock);
+            someBlock = form1.createBlock(new Point(45, 40), (Block.BlockTypes)currentBlock);
             someBlock.Draw(pic_preView.Handle);
 
             p_foreColor.BackColor = GameField.BlockForeColor[currentBlock - 1];
@@ -91,7 +92,7 @@ namespace TetrisDemo
             if (colorDialog1.ShowDialog() == DialogResult.OK)
                 p_foreColor.BackColor = colorDialog1.Color;
             pic_preView.Refresh();
-            someBlock = new Block(new Point(45, 40), (Block.BlockTypes)currentBlock, p_foreColor.BackColor, p_backColor.BackColor);
+            someBlock = form1.createBlock(new Point(45, 40), (Block.BlockTypes)currentBlock, p_foreColor.BackColor, p_backColor.BackColor);
             someBlock.Draw(pic_preView.Handle);
         }
         /*选择背景色*/
@@ -100,7 +101,7 @@ namespace TetrisDemo
             if (colorDialog1.ShowDialog() == DialogResult.OK)
                 p_backColor.BackColor = colorDialog1.Color;
             pic_preView.Refresh();
-            someBlock = new Block(new Point(45, 40), (Block.BlockTypes)currentBlock, p_foreColor.BackColor, p_backColor.BackColor);
+            someBlock = form1.createBlock(new Point(45, 40), (Block.BlockTypes)currentBlock, p_foreColor.BackColor, p_backColor.BackColor);
             someBlock.Draw(pic_preView.Handle);
         }
         //保存
@@ -112,7 +113,7 @@ namespace TetrisDemo
                 GameField.BlockBackColor[currentBlock - 1] = p_backColor.BackColor;
                 //Form1.ActiveForm.Refresh();
                 //重画预览框的图片
-                someBlock = new Block(new Point(45, 40), (Block.BlockTypes)currentBlock);
+                someBlock = form1.createBlock(new Point(45, 40), (Block.BlockTypes)currentBlock);
                 someBlock.Draw(pic_preView.Handle);
                 //游戏设置改变
                 GameField.isChanged = true;
