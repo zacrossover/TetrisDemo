@@ -1,4 +1,5 @@
 using System.Windows.Forms;
+using static TetrisDemo.Block;
 
 namespace TetrisDemo
 {
@@ -147,10 +148,10 @@ namespace TetrisDemo
                     GameField.Redraw();
                 }
                 //产生下一个block
-                currentBlock = new Block(startLocation, nextBlock.blockType);
+                currentBlock = createBlock(startLocation, nextBlock.blockType);
                 currentBlock.Draw(GameField.winHandle);
                 pic_preView.Refresh();
-                nextBlock = new Block(new Point(80, 50), Block.BlockTypes.undefined);
+                nextBlock = createBlock(new Point(80, 50), BlockTypes.undefined);
                 nextBlock.Draw(pic_preView.Handle);
             }
             currentBlock.down();
@@ -187,9 +188,9 @@ namespace TetrisDemo
             button3.Enabled = true;
             if (currentBlock == null)
             {//第一次开始
-                currentBlock = new Block(startLocation, Block.BlockTypes.undefined);
+                currentBlock = createBlock(startLocation, BlockTypes.undefined);
                 currentBlock.Draw(GameField.winHandle);
-                nextBlock = new Block(new Point(80, 50), Block.BlockTypes.undefined);
+                nextBlock = createBlock(new Point(80, 50), BlockTypes.undefined);
                 nextBlock.Draw(pic_preView.Handle);
                 stillRuning = true;
                 timer1.Start();
@@ -239,9 +240,9 @@ namespace TetrisDemo
             score = 0;           //重新计算积分
             t_score.Text = "0";
             msg.SendToBack();   //将提示窗口隐藏
-            currentBlock = new Block(startLocation, Block.BlockTypes.undefined);
+            currentBlock = createBlock(startLocation, BlockTypes.undefined);
             currentBlock.Draw(GameField.winHandle);
-            nextBlock = new Block(new Point(80, 50), Block.BlockTypes.undefined);
+            nextBlock = createBlock(new Point(80, 50), BlockTypes.undefined);
             nextBlock.Draw(pic_preView.Handle);
             开始ToolStripMenuItem.Enabled = false;
             暂停ToolStripMenuItem1.Enabled = true;
@@ -393,15 +394,52 @@ namespace TetrisDemo
             score = 0;           //重新计算积分
             t_score.Text = "0";
             msg.SendToBack();   //将提示窗口隐藏
-            currentBlock = new Block(startLocation, Block.BlockTypes.undefined);
+            currentBlock = createBlock(startLocation,BlockTypes.undefined);
             currentBlock.Draw(GameField.winHandle);
-            nextBlock = new Block(new Point(80, 50), Block.BlockTypes.undefined);
+            nextBlock = createBlock(new Point(80, 50), BlockTypes.undefined);
             nextBlock.Draw(pic_preView.Handle);
             开始ToolStripMenuItem.Enabled = false;
             暂停ToolStripMenuItem1.Enabled = true;
             结束ToolStripMenuItem.Enabled = true;
             stillRuning = true;
             timer1.Start();
+        }
+        private Block createBlock(Point loc, BlockTypes blockTypes)
+        {
+            Random rand = new Random();
+            if (blockTypes == BlockTypes.undefined)
+            {
+                blockTypes = (BlockTypes)(rand.Next(7) + 1);
+            }
+            Block block;
+            switch (blockTypes)
+            {
+                case BlockTypes.square:
+                    block = new BlockO(loc);
+                    break;
+                case BlockTypes.line:
+                    block = new BlockI(loc);
+                    break;
+                case BlockTypes.T:
+                    block = new BlockT(loc);
+                    break;
+                case BlockTypes.J:
+                    block = new BlockJ(loc);
+                    break;
+                case BlockTypes.L:
+                    block = new BlockL(loc);
+                    break;
+                case BlockTypes.Z:
+                    block = new BlockZ(loc);
+                    break;
+                case BlockTypes.S:
+                    block = new BlockS(loc);
+                    break;
+                default:
+                    block = new BlockO(loc);
+                    break;
+            }
+            return block;
         }
     }
 }

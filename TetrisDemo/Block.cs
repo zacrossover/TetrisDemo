@@ -6,14 +6,14 @@ using System.Threading.Tasks;
 
 namespace TetrisDemo
 {
-    internal class Block
+    internal abstract class Block
     {
         public Square square1;  //组成block的四个小方块
         public Square square2;
         public Square square3;
         public Square square4;
 
-        private const int squareSize = GameField.SquareSize; //小方块的边长
+        public const int squareSize = GameField.SquareSize; //小方块的边长
         public enum BlockTypes
         {
             undefined = 0,
@@ -27,8 +27,8 @@ namespace TetrisDemo
         };//一共有7种形状
         public BlockTypes blockType;  //方块的形状
         //七个小方块的颜色数组
-        private Color foreColor;
-        private Color backColor;
+        public Color foreColor;
+        public Color backColor;
         //方块的方向
         public enum RotateDirections
         {
@@ -39,7 +39,7 @@ namespace TetrisDemo
         };
         public RotateDirections myRotation = RotateDirections.North;
 
-        public Block(Point thisLocation, BlockTypes bType)
+/*        public Block(Point thisLocation, BlockTypes bType)
         { //当blockType为undefined时，随机产生方块形状
             Random rand = new Random();
             if (bType == BlockTypes.undefined)
@@ -111,9 +111,9 @@ namespace TetrisDemo
                     square4.location = new Point(thisLocation.X + 2 * squareSize, thisLocation.Y);
                     break;
             }
-        }
+        }*/
         //含有自定义颜色的重载
-        public Block(Point thisLocation, BlockTypes bType, Color fc, Color bc)
+/*        public Block(Point thisLocation, BlockTypes bType, Color fc, Color bc)
         { //当blockType为undefined时，随机产生方块形状
             Random rand = new Random();
             if (bType == BlockTypes.undefined)
@@ -182,7 +182,7 @@ namespace TetrisDemo
                     square4.location = new Point(thisLocation.X + 2 * squareSize, thisLocation.Y);
                     break;
             }
-        }
+        }*/
 
         /*画方块*/
         public void Draw(System.IntPtr winHandle)
@@ -270,7 +270,9 @@ namespace TetrisDemo
             }
         }
         /*旋转block*/
-        public void Rotate()
+
+         public abstract void Rotate();
+ /*       public void Rotate()
         {
             //保存每个小块的位置
             Point oldPosition1 = square1.location;
@@ -443,7 +445,7 @@ namespace TetrisDemo
                 square4.location = oldPosition4;
             }
             Draw(GameField.winHandle);
-        }
+        }*/
         /*检测是否到顶*/
         public int Top()
         {

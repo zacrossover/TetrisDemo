@@ -224,7 +224,7 @@
             // 开始ToolStripMenuItem
             // 
             开始ToolStripMenuItem.Name = "开始ToolStripMenuItem";
-            开始ToolStripMenuItem.Size = new Size(180, 22);
+            开始ToolStripMenuItem.Size = new Size(124, 22);
             开始ToolStripMenuItem.Text = "开始";
             开始ToolStripMenuItem.Click += 开始ToolStripMenuItem1_Click;
             // 
@@ -232,7 +232,7 @@
             // 
             暂停ToolStripMenuItem1.Enabled = false;
             暂停ToolStripMenuItem1.Name = "暂停ToolStripMenuItem1";
-            暂停ToolStripMenuItem1.Size = new Size(180, 22);
+            暂停ToolStripMenuItem1.Size = new Size(124, 22);
             暂停ToolStripMenuItem1.Text = "暂停";
             暂停ToolStripMenuItem1.Click += 暂停ToolStripMenuItem1_Click;
             // 
@@ -240,14 +240,14 @@
             // 
             结束ToolStripMenuItem.Enabled = false;
             结束ToolStripMenuItem.Name = "结束ToolStripMenuItem";
-            结束ToolStripMenuItem.Size = new Size(180, 22);
+            结束ToolStripMenuItem.Size = new Size(124, 22);
             结束ToolStripMenuItem.Text = "结束";
             结束ToolStripMenuItem.Click += 结束ToolStripMenuItem_Click;
             // 
             // 重新开始ToolStripMenuItem
             // 
             重新开始ToolStripMenuItem.Name = "重新开始ToolStripMenuItem";
-            重新开始ToolStripMenuItem.Size = new Size(180, 22);
+            重新开始ToolStripMenuItem.Size = new Size(124, 22);
             重新开始ToolStripMenuItem.Text = "重新开始";
             重新开始ToolStripMenuItem.Click += 重新开始ToolStripMenuItem_Click;
             // 
@@ -351,9 +351,8 @@
             // 
             // Form1
             // 
-            AutoScaleDimensions = new SizeF(7F, 17F);
-            AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(616, 711);
+            AutoScaleMode = AutoScaleMode.None;
+            ClientSize = new Size(616, 701);
             Controls.Add(button4);
             Controls.Add(button3);
             Controls.Add(button2);

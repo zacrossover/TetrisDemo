@@ -38,31 +38,31 @@ namespace TetrisDemo
             pictureBox7.BackColor = gameFieldBgC;
             Application.DoEvents();
             //图片框1号：方块
-            someBlock = new Block(new Point(35, 27), Block.BlockTypes.square);
+            someBlock = new BlockO(new Point(35, 27));
             someBlock.Draw(pictureBox1.Handle);
 
             //图片框2号：直线
-            someBlock = new Block(new Point(20, 35), Block.BlockTypes.line);
+            someBlock = new BlockI(new Point(20, 35));
             someBlock.Draw(pictureBox2.Handle);
 
             //图片框3号：J
-            someBlock = new Block(new Point(42, 20), Block.BlockTypes.J);
+            someBlock = new BlockJ(new Point(42, 20));
             someBlock.Draw(pictureBox3.Handle);
 
             //图片框4号：L
-            someBlock = new Block(new Point(42, 20), Block.BlockTypes.L);
+            someBlock = new BlockL(new Point(42, 20));
             someBlock.Draw(pictureBox4.Handle);
 
             //图片框5号：T
-            someBlock = new Block(new Point(27, 27), Block.BlockTypes.T);
+            someBlock = new BlockT(new Point(27, 27));
             someBlock.Draw(pictureBox5.Handle);
 
             //图片框6号：Z
-            someBlock = new Block(new Point(27, 27), Block.BlockTypes.Z);
+            someBlock = new BlockZ(new Point(27, 27));
             someBlock.Draw(pictureBox6.Handle);
 
             //图片框7号：S
-            someBlock = new Block(new Point(27, 27), Block.BlockTypes.S);
+            someBlock = new BlockS(new Point(27, 27));
             someBlock.Draw(pictureBox7.Handle);
             Application.DoEvents();
         }
