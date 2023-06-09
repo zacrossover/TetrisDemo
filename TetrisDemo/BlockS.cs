@@ -11,6 +11,7 @@ namespace TetrisDemo
     {
         public BlockS(Point thisLocation)
         {
+            blockType = BlockTypes.S;
             foreColor = GameField.BlockForeColor[6];
             backColor = GameField.BlockBackColor[6];
             Size squareS = new Size(squareSize, squareSize);
@@ -26,6 +27,7 @@ namespace TetrisDemo
 
         public BlockS(Point thisLocation,Color fc, Color bc)
         {
+            blockType = BlockTypes.S;
             Size squareS = new Size(squareSize, squareSize);
             square1 = new Square(squareS, fc, bc);
             square2 = new Square(squareS, fc, bc);
