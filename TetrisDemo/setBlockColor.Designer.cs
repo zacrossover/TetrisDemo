@@ -36,6 +36,7 @@
             pictureBox5 = new PictureBox();
             pictureBox6 = new PictureBox();
             pictureBox7 = new PictureBox();
+            pictureBox8 = new PictureBox();
             label2 = new Label();
             pic_preView = new PictureBox();
             label3 = new Label();
@@ -144,6 +145,17 @@
             pictureBox7.TabIndex = 0;
             pictureBox7.TabStop = false;
             pictureBox7.Click += pictureBox_Click;
+            //
+            //pictureBox8
+            //
+            pictureBox8.BorderStyle = BorderStyle.FixedSingle;
+            pictureBox8.Location = new Point(429, 218);
+            pictureBox8.Margin = new Padding(4, 4, 4, 4);
+            pictureBox8.Name = "pictureBox8";
+            pictureBox8.Size = new Size(116, 120);
+            pictureBox8.TabIndex = 0;
+            pictureBox8.TabStop = false;
+            pictureBox8.Click += pictureBox_Click;
             // 
             // label2
             // 
@@ -254,6 +266,7 @@
             Controls.Add(label2);
             Controls.Add(label1);
             Controls.Add(pic_preView);
+            Controls.Add(pictureBox8);
             Controls.Add(pictureBox7);
             Controls.Add(pictureBox6);
             Controls.Add(pictureBox5);
@@ -290,6 +303,7 @@
         private System.Windows.Forms.PictureBox pictureBox5;
         private System.Windows.Forms.PictureBox pictureBox6;
         private System.Windows.Forms.PictureBox pictureBox7;
+        private System.Windows.Forms.PictureBox pictureBox8;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.PictureBox pic_preView;
         private System.Windows.Forms.Label label3;
