@@ -61,6 +61,7 @@
             button2 = new Button();
             button3 = new Button();
             button4 = new Button();
+            排行榜ToolStripMenuItem = new ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)picBackGround).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pic_preView).BeginInit();
             menuStrip1.SuspendLayout();
@@ -97,7 +98,7 @@
             label1.Location = new Point(379, 31);
             label1.Margin = new Padding(4, 0, 4, 0);
             label1.Name = "label1";
-            label1.Size = new Size(57, 12);
+            label1.Size = new Size(84, 18);
             label1.TabIndex = 3;
             label1.Text = "下一个：";
             // 
@@ -109,18 +110,19 @@
             t_score.Location = new Point(100, 19);
             t_score.Margin = new Padding(4, 0, 4, 0);
             t_score.Name = "t_score";
-            t_score.Size = new Size(21, 21);
+            t_score.Size = new Size(31, 33);
             t_score.TabIndex = 4;
             t_score.Text = "0";
             // 
             // menuStrip1
             // 
             menuStrip1.BackColor = SystemColors.Control;
-            menuStrip1.Items.AddRange(new ToolStripItem[] { 游戏设置ToolStripMenuItem, 控制ToolStripMenuItem, 帮助ToolStripMenuItem });
+            menuStrip1.ImageScalingSize = new Size(24, 24);
+            menuStrip1.Items.AddRange(new ToolStripItem[] { 游戏设置ToolStripMenuItem, 控制ToolStripMenuItem, 帮助ToolStripMenuItem, 排行榜ToolStripMenuItem });
             menuStrip1.Location = new Point(0, 0);
             menuStrip1.Name = "menuStrip1";
             menuStrip1.Padding = new Padding(7, 3, 0, 3);
-            menuStrip1.Size = new Size(616, 27);
+            menuStrip1.Size = new Size(616, 34);
             menuStrip1.TabIndex = 6;
             menuStrip1.Text = "menuStrip1";
             // 
@@ -128,14 +130,14 @@
             // 
             游戏设置ToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { 速度设置ToolStripMenuItem, 背景颜色设置ToolStripMenuItem, 方块颜色设置ToolStripMenuItem, 恢复默认设置ToolStripMenuItem, toolStripMenuItem1, 退出ToolStripMenuItem });
             游戏设置ToolStripMenuItem.Name = "游戏设置ToolStripMenuItem";
-            游戏设置ToolStripMenuItem.Size = new Size(68, 21);
+            游戏设置ToolStripMenuItem.Size = new Size(98, 28);
             游戏设置ToolStripMenuItem.Text = "游戏设置";
             // 
             // 速度设置ToolStripMenuItem
             // 
             速度设置ToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { 较慢ToolStripMenuItem, 慢ToolStripMenuItem, 快ToolStripMenuItem, 较快ToolStripMenuItem, 非常快ToolStripMenuItem });
             速度设置ToolStripMenuItem.Name = "速度设置ToolStripMenuItem";
-            速度设置ToolStripMenuItem.Size = new Size(148, 22);
+            速度设置ToolStripMenuItem.Size = new Size(270, 34);
             速度设置ToolStripMenuItem.Text = "速度设置";
             // 
             // 较慢ToolStripMenuItem
@@ -144,7 +146,7 @@
             较慢ToolStripMenuItem.CheckOnClick = true;
             较慢ToolStripMenuItem.CheckState = CheckState.Checked;
             较慢ToolStripMenuItem.Name = "较慢ToolStripMenuItem";
-            较慢ToolStripMenuItem.Size = new Size(112, 22);
+            较慢ToolStripMenuItem.Size = new Size(164, 34);
             较慢ToolStripMenuItem.Text = "较慢";
             较慢ToolStripMenuItem.Click += 较慢ToolStripMenuItem_Click;
             // 
@@ -152,7 +154,7 @@
             // 
             慢ToolStripMenuItem.CheckOnClick = true;
             慢ToolStripMenuItem.Name = "慢ToolStripMenuItem";
-            慢ToolStripMenuItem.Size = new Size(112, 22);
+            慢ToolStripMenuItem.Size = new Size(164, 34);
             慢ToolStripMenuItem.Text = "慢";
             慢ToolStripMenuItem.Click += 慢ToolStripMenuItem_Click;
             // 
@@ -160,7 +162,7 @@
             // 
             快ToolStripMenuItem.CheckOnClick = true;
             快ToolStripMenuItem.Name = "快ToolStripMenuItem";
-            快ToolStripMenuItem.Size = new Size(112, 22);
+            快ToolStripMenuItem.Size = new Size(164, 34);
             快ToolStripMenuItem.Text = "快";
             快ToolStripMenuItem.Click += 快ToolStripMenuItem_Click;
             // 
@@ -168,7 +170,7 @@
             // 
             较快ToolStripMenuItem.CheckOnClick = true;
             较快ToolStripMenuItem.Name = "较快ToolStripMenuItem";
-            较快ToolStripMenuItem.Size = new Size(112, 22);
+            较快ToolStripMenuItem.Size = new Size(164, 34);
             较快ToolStripMenuItem.Text = "较快";
             较快ToolStripMenuItem.Click += 较快ToolStripMenuItem_Click;
             // 
@@ -176,40 +178,40 @@
             // 
             非常快ToolStripMenuItem.CheckOnClick = true;
             非常快ToolStripMenuItem.Name = "非常快ToolStripMenuItem";
-            非常快ToolStripMenuItem.Size = new Size(112, 22);
+            非常快ToolStripMenuItem.Size = new Size(164, 34);
             非常快ToolStripMenuItem.Text = "非常快";
             非常快ToolStripMenuItem.Click += 非常快ToolStripMenuItem_Click;
             // 
             // 背景颜色设置ToolStripMenuItem
             // 
             背景颜色设置ToolStripMenuItem.Name = "背景颜色设置ToolStripMenuItem";
-            背景颜色设置ToolStripMenuItem.Size = new Size(148, 22);
+            背景颜色设置ToolStripMenuItem.Size = new Size(270, 34);
             背景颜色设置ToolStripMenuItem.Text = "背景颜色设置";
             背景颜色设置ToolStripMenuItem.Click += 背景颜色设置ToolStripMenuItem_Click;
             // 
             // 方块颜色设置ToolStripMenuItem
             // 
             方块颜色设置ToolStripMenuItem.Name = "方块颜色设置ToolStripMenuItem";
-            方块颜色设置ToolStripMenuItem.Size = new Size(148, 22);
+            方块颜色设置ToolStripMenuItem.Size = new Size(270, 34);
             方块颜色设置ToolStripMenuItem.Text = "方块颜色设置";
             方块颜色设置ToolStripMenuItem.Click += 方块颜色设置ToolStripMenuItem_Click;
             // 
             // 恢复默认设置ToolStripMenuItem
             // 
             恢复默认设置ToolStripMenuItem.Name = "恢复默认设置ToolStripMenuItem";
-            恢复默认设置ToolStripMenuItem.Size = new Size(148, 22);
+            恢复默认设置ToolStripMenuItem.Size = new Size(270, 34);
             恢复默认设置ToolStripMenuItem.Text = "恢复默认设置";
             恢复默认设置ToolStripMenuItem.Click += 恢复默认设置ToolStripMenuItem_Click;
             // 
             // toolStripMenuItem1
             // 
             toolStripMenuItem1.Name = "toolStripMenuItem1";
-            toolStripMenuItem1.Size = new Size(145, 6);
+            toolStripMenuItem1.Size = new Size(267, 6);
             // 
             // 退出ToolStripMenuItem
             // 
             退出ToolStripMenuItem.Name = "退出ToolStripMenuItem";
-            退出ToolStripMenuItem.Size = new Size(148, 22);
+            退出ToolStripMenuItem.Size = new Size(270, 34);
             退出ToolStripMenuItem.Text = "退出";
             退出ToolStripMenuItem.Click += 退出ToolStripMenuItem_Click;
             // 
@@ -217,14 +219,14 @@
             // 
             控制ToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { 开始ToolStripMenuItem, 暂停ToolStripMenuItem1, 结束ToolStripMenuItem, 重新开始ToolStripMenuItem });
             控制ToolStripMenuItem.Name = "控制ToolStripMenuItem";
-            控制ToolStripMenuItem.Size = new Size(44, 21);
+            控制ToolStripMenuItem.Size = new Size(62, 28);
             控制ToolStripMenuItem.Text = "控制";
             控制ToolStripMenuItem.Visible = false;
             // 
             // 开始ToolStripMenuItem
             // 
             开始ToolStripMenuItem.Name = "开始ToolStripMenuItem";
-            开始ToolStripMenuItem.Size = new Size(124, 22);
+            开始ToolStripMenuItem.Size = new Size(270, 34);
             开始ToolStripMenuItem.Text = "开始";
             开始ToolStripMenuItem.Click += 开始ToolStripMenuItem1_Click;
             // 
@@ -232,7 +234,7 @@
             // 
             暂停ToolStripMenuItem1.Enabled = false;
             暂停ToolStripMenuItem1.Name = "暂停ToolStripMenuItem1";
-            暂停ToolStripMenuItem1.Size = new Size(124, 22);
+            暂停ToolStripMenuItem1.Size = new Size(270, 34);
             暂停ToolStripMenuItem1.Text = "暂停";
             暂停ToolStripMenuItem1.Click += 暂停ToolStripMenuItem1_Click;
             // 
@@ -240,14 +242,14 @@
             // 
             结束ToolStripMenuItem.Enabled = false;
             结束ToolStripMenuItem.Name = "结束ToolStripMenuItem";
-            结束ToolStripMenuItem.Size = new Size(124, 22);
+            结束ToolStripMenuItem.Size = new Size(270, 34);
             结束ToolStripMenuItem.Text = "结束";
             结束ToolStripMenuItem.Click += 结束ToolStripMenuItem_Click;
             // 
             // 重新开始ToolStripMenuItem
             // 
             重新开始ToolStripMenuItem.Name = "重新开始ToolStripMenuItem";
-            重新开始ToolStripMenuItem.Size = new Size(124, 22);
+            重新开始ToolStripMenuItem.Size = new Size(270, 34);
             重新开始ToolStripMenuItem.Text = "重新开始";
             重新开始ToolStripMenuItem.Click += 重新开始ToolStripMenuItem_Click;
             // 
@@ -255,20 +257,20 @@
             // 
             帮助ToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { 关于ToolStripMenuItem, 操作说明ToolStripMenuItem });
             帮助ToolStripMenuItem.Name = "帮助ToolStripMenuItem";
-            帮助ToolStripMenuItem.Size = new Size(44, 21);
+            帮助ToolStripMenuItem.Size = new Size(62, 28);
             帮助ToolStripMenuItem.Text = "帮助";
             // 
             // 关于ToolStripMenuItem
             // 
             关于ToolStripMenuItem.Name = "关于ToolStripMenuItem";
-            关于ToolStripMenuItem.Size = new Size(124, 22);
+            关于ToolStripMenuItem.Size = new Size(270, 34);
             关于ToolStripMenuItem.Text = "关于";
             关于ToolStripMenuItem.Click += 关于ToolStripMenuItem_Click;
             // 
             // 操作说明ToolStripMenuItem
             // 
             操作说明ToolStripMenuItem.Name = "操作说明ToolStripMenuItem";
-            操作说明ToolStripMenuItem.Size = new Size(124, 22);
+            操作说明ToolStripMenuItem.Size = new Size(270, 34);
             操作说明ToolStripMenuItem.Text = "操作说明";
             操作说明ToolStripMenuItem.Click += 操作说明ToolStripMenuItem_Click;
             // 
@@ -286,7 +288,7 @@
             msg.Location = new Point(147, 245);
             msg.Margin = new Padding(4, 0, 4, 0);
             msg.Name = "msg";
-            msg.Size = new Size(39, 20);
+            msg.Size = new Size(58, 30);
             msg.TabIndex = 7;
             msg.Text = "msg";
             // 
@@ -348,6 +350,13 @@
             button4.Text = "重新开始";
             button4.UseVisualStyleBackColor = true;
             button4.Click += button4_Click;
+            // 
+            // 排行榜ToolStripMenuItem
+            // 
+            排行榜ToolStripMenuItem.Name = "排行榜ToolStripMenuItem";
+            排行榜ToolStripMenuItem.Size = new Size(80, 28);
+            排行榜ToolStripMenuItem.Text = "排行榜";
+            排行榜ToolStripMenuItem.Click += 排行榜ToolStripMenuItem_Click;
             // 
             // Form1
             // 
@@ -417,5 +426,6 @@
         private Button button2;
         private Button button3;
         private Button button4;
+        private ToolStripMenuItem 排行榜ToolStripMenuItem;
     }
 }

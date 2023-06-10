@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using System.Windows.Forms;
 using static TetrisDemo.Block;
 
@@ -10,6 +11,9 @@ namespace TetrisDemo
         private Point startLocation = new Point(GameField.SquareSize * 8, 0);  //方块产生的位置
         private int score = 0;            //玩家积分
         private bool stillRuning = false; //游戏运行开关
+        private string name = "";//玩家名称
+
+        private list lst = new list();
         private enum speeds
         {
             slower = 1000,
@@ -135,6 +139,7 @@ namespace TetrisDemo
                     showMsg("Game Over！");
                     stillRuning = false;
                     timer1.Stop();
+                    lst.AddRanking(name, score);
                     return;
                 }
                 //否则计算分数并继续
@@ -193,6 +198,13 @@ namespace TetrisDemo
                 nextBlock = createBlock(new Point(80, 50), BlockTypes.undefined);
                 nextBlock.Draw(pic_preView.Handle);
                 stillRuning = true;
+                // 创建一个输入框
+                name = "";
+                if (InputBox("输入姓名", "请输入您的姓名：", ref name) == DialogResult.OK)
+                {
+                    // 点击确定后，将输入的姓名显示在标签上
+                    label1.Text = "您好，" + name + "！";
+                }
                 timer1.Start();
             }
             else
@@ -217,6 +229,7 @@ namespace TetrisDemo
         {
             stillRuning = false;
             timer1.Stop();
+            lst.AddRanking(name, score);
             currentBlock = null;
             showMsg("结 束");
             结束ToolStripMenuItem.Enabled = false;
@@ -233,6 +246,7 @@ namespace TetrisDemo
         private void 重新开始ToolStripMenuItem_Click(object sender, EventArgs e)
         {
             timer1.Stop();
+            lst.AddRanking(name, score);
             picBackGround.Refresh();   //刷新游戏区
             pic_preView.Refresh();     //刷新预览区
             GameField.arriveBlock = new Square[GameField.width, GameField.height]; //清空所有小方块
@@ -255,6 +269,7 @@ namespace TetrisDemo
         private void 退出ToolStripMenuItem_Click(object sender, EventArgs e)
         {
             stillRuning = false;
+            lst.AddRanking(name, score);
             timer1.Stop();
             this.Close();
         }
@@ -372,6 +387,7 @@ namespace TetrisDemo
         {
             stillRuning = false;
             timer1.Stop();
+            lst.AddRanking(name, score);
             currentBlock = null;
             showMsg("结 束");
             结束ToolStripMenuItem.Enabled = false;
@@ -387,6 +403,7 @@ namespace TetrisDemo
         private void button4_Click(object sender, EventArgs e)
         {
             timer1.Stop();
+            lst.AddRanking(name, score);
             picBackGround.Refresh();   //刷新游戏区
             pic_preView.Refresh();     //刷新预览区
             GameField.arriveBlock = new Square[GameField.width, GameField.height]; //清空所有小方块
@@ -394,7 +411,7 @@ namespace TetrisDemo
             score = 0;           //重新计算积分
             t_score.Text = "0";
             msg.SendToBack();   //将提示窗口隐藏
-            currentBlock = createBlock(startLocation,BlockTypes.undefined);
+            currentBlock = createBlock(startLocation, BlockTypes.undefined);
             currentBlock.Draw(GameField.winHandle);
             nextBlock = createBlock(new Point(80, 50), BlockTypes.undefined);
             nextBlock.Draw(pic_preView.Handle);
@@ -404,7 +421,49 @@ namespace TetrisDemo
             stillRuning = true;
             timer1.Start();
         }
-        public Block createBlock(Point loc, BlockTypes blockTypes)
+        // 自定义输入框
+        public static DialogResult InputBox(string title, string promptText, ref string value)
+        {
+            Form form = new Form();
+            Label label = new Label();
+            TextBox textBox = new TextBox();
+            Button buttonOk = new Button();
+            Button buttonCancel = new Button();
+
+            form.Text = title;
+            label.Text = promptText;
+            textBox.Text = value;
+
+            buttonOk.Text = "确定\n";
+            buttonCancel.Text = "取消\n";
+            buttonOk.DialogResult = DialogResult.OK;
+            buttonCancel.DialogResult = DialogResult.Cancel;
+
+            label.SetBounds(9, 20, 372, 20);
+            textBox.SetBounds(12, 56, 372, 40);
+            buttonOk.SetBounds(228, 102, 75, 43);
+            buttonCancel.SetBounds(309, 102, 75, 43);
+
+            label.AutoSize = true;
+            textBox.Anchor = textBox.Anchor | AnchorStyles.Right;
+            buttonOk.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
+            buttonCancel.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
+
+            form.ClientSize = new System.Drawing.Size(396, 147);
+            form.Controls.AddRange(new Control[] { label, textBox, buttonOk, buttonCancel });
+            form.ClientSize = new System.Drawing.Size(Math.Max(300, label.Right + 10), form.ClientSize.Height);
+            form.FormBorderStyle = FormBorderStyle.FixedDialog;
+            form.StartPosition = FormStartPosition.CenterScreen;
+            form.MinimizeBox = false;
+            form.MaximizeBox = false;
+            form.AcceptButton = buttonOk;
+            form.CancelButton = buttonCancel;
+
+            DialogResult dialogResult = form.ShowDialog();
+            value = textBox.Text;
+            return dialogResult;
+        }
+            public Block createBlock(Point loc, BlockTypes blockTypes)
         {
             Random rand = new Random();
             if (blockTypes == BlockTypes.undefined)
@@ -478,6 +537,12 @@ namespace TetrisDemo
                     break;
             }
             return block;
+        }
+
+        private void 排行榜ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            lst.StartPosition = FormStartPosition.CenterScreen;
+            lst.ShowDialog();
         }
     }
 }
