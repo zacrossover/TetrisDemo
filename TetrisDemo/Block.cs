@@ -23,7 +23,8 @@ namespace TetrisDemo
             L = 4,
             T = 5,
             Z = 6,
-            S = 7
+            S = 7,
+            One = 8
         };//一共有7种形状
         public BlockTypes blockType;  //方块的形状
         //七个小方块的颜色数组

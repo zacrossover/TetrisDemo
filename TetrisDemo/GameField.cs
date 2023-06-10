@@ -14,7 +14,7 @@ namespace TetrisDemo
         public const int SquareSize = 15;      //每个四分之一小方块的边长
         public static Color BackColor;         //场景的背景色
         public static System.IntPtr winHandle; //场景的handle
-        public static Color[] BlockForeColor = { Color.Blue, Color.Beige, Color.DarkKhaki, Color.DarkMagenta, Color.DarkOliveGreen, Color.DarkOrange, Color.DarkRed };
+        public static Color[] BlockForeColor = { Color.Blue, Color.Beige, Color.DarkKhaki, Color.DarkMagenta, Color.DarkOliveGreen, Color.DarkOrange, Color.DarkRed ,Color.Brown};
         public static Color[] BlockBackColor = { Color.LightCyan, Color.DarkSeaGreen, Color.Beige, Color.Beige, Color.Beige, Color.Beige, Color.Beige };
         public static bool isChanged = false; //设置是否被更改的标志位
         public static SoundPlayer sound = new SoundPlayer();
