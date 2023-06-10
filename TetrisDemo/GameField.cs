@@ -14,15 +14,15 @@ namespace TetrisDemo
         public const int SquareSize = 15;      //每个四分之一小方块的边长
         public static Color BackColor;         //场景的背景色
         public static System.IntPtr winHandle; //场景的handle
-        public static Color[] BlockForeColor = { Color.Blue, Color.Beige, Color.DarkKhaki, Color.DarkMagenta, Color.DarkOliveGreen, Color.DarkOrange, Color.DarkRed ,Color.Brown};
-        public static Color[] BlockBackColor = { Color.LightCyan, Color.DarkSeaGreen, Color.Beige, Color.Beige, Color.Beige, Color.Beige, Color.Beige };
-        public static bool isChanged = false; //设置是否被更改的标志位
+        public static Color[] BlockForeColor = { Color.Blue, Color.Beige, Color.DarkKhaki, Color.DarkMagenta, Color.DarkOliveGreen, Color.DarkOrange, Color.DarkRed ,Color.DarkSeaGreen };
+        public static Color[] BlockBackColor = { Color.LightCyan, Color.DarkSeaGreen, Color.Beige, Color.Beige, Color.Beige, Color.Beige, Color.Beige, Color.Beige };
+        public static bool isChanged = false; 
         public static SoundPlayer sound = new SoundPlayer();
 
         public static Square[,] arriveBlock = new Square[width, height]; //保存已经不能再下落了的方块
-        public static int[] arrBitBlock = new int[height];  //位数组：当某个位置有方块时，该行的该位为1
-        private const int bitEmpty = 0x0;      //0000 0000 0000 0000 0000
-        private const int bitFull = 0xFFFFF;   //1111 1111 1111 1111 1111
+        public static int[] arrBitBlock = new int[height];  //位数组：当某个位置有方块时，该行的该位为1,相当于2维数组
+        private const int bitEmpty = 0x0;      //某一行全是0
+        private const int bitFull = 0xFFFFF;   //某一行全是1
 
         /*检测是否为空*/
         public static bool isEmpty(int x, int y)

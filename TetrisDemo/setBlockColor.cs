@@ -18,7 +18,7 @@ namespace TetrisDemo
             InitializeComponent();
         }
         private Block someBlock;
-        private int currentBlock = 0;   //0代表没选择，1，2，3……代表选择的图形框号
+        private int currentBlock = 0;   
         private Color gameFieldBgC = GameField.BackColor;
         private void setBlockColor_Load(object sender, EventArgs e)
         {
@@ -37,6 +37,7 @@ namespace TetrisDemo
             pictureBox5.BackColor = gameFieldBgC;
             pictureBox6.BackColor = gameFieldBgC;
             pictureBox7.BackColor = gameFieldBgC;
+            pictureBox8.BackColor = gameFieldBgC;
             Application.DoEvents();
             //图片框1号：方块
             someBlock = new BlockO(new Point(35, 27));
@@ -65,6 +66,9 @@ namespace TetrisDemo
             //图片框7号：S
             someBlock = new BlockS(new Point(27, 27));
             someBlock.Draw(pictureBox7.Handle);
+
+            someBlock = new BlockOne(new Point(27, 27));
+            someBlock.Draw(pictureBox8.Handle);
             Application.DoEvents();
         }
         /*关闭*/

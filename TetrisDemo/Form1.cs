@@ -1,3 +1,4 @@
+using System.Reflection.Emit;
 using System.Windows.Forms;
 using static TetrisDemo.Block;
 
@@ -10,6 +11,8 @@ namespace TetrisDemo
         private Point startLocation = new Point(GameField.SquareSize * 8, 0);  //方块产生的位置
         private int score = 0;            //玩家积分
         private bool stillRuning = false; //游戏运行开关
+        private int speedLevel = 1;            //玩家速度等级
+        private int level = 1;
         private enum speeds
         {
             slower = 1000,
@@ -143,6 +146,7 @@ namespace TetrisDemo
                 {
                     score += GameField.width * eraseLines;
                     t_score.Text = score.ToString();
+                    
                     picBackGround.Invalidate();
                     Application.DoEvents();
                     GameField.Redraw();
@@ -154,7 +158,7 @@ namespace TetrisDemo
                 nextBlock = createBlock(new Point(80, 50), BlockTypes.undefined);
                 nextBlock.Draw(pic_preView.Handle);
             }
-            currentBlock.down();
+            //currentBlock.down();
         }
 
         /*窗口重绘*/
@@ -239,6 +243,7 @@ namespace TetrisDemo
             GameField.arrBitBlock = new int[GameField.height];
             score = 0;           //重新计算积分
             t_score.Text = "0";
+            level = 1;
             msg.SendToBack();   //将提示窗口隐藏
             currentBlock = createBlock(startLocation, BlockTypes.undefined);
             currentBlock.Draw(GameField.winHandle);
@@ -296,30 +301,35 @@ namespace TetrisDemo
         {
             changeChecked(较慢ToolStripMenuItem);
             timer1.Interval = (int)speeds.slower;
+            speedLevel = 1;
         }
         /*速度选择慢*/
         private void 慢ToolStripMenuItem_Click(object sender, EventArgs e)
         {
             changeChecked(慢ToolStripMenuItem);
             timer1.Interval = (int)speeds.slow;
+            speedLevel = 2;
         }
         /*速度选择快*/
         private void 快ToolStripMenuItem_Click(object sender, EventArgs e)
         {
             changeChecked(快ToolStripMenuItem);
             timer1.Interval = (int)speeds.quick;
+            speedLevel = 3;
         }
         /*速度选择较快*/
         private void 较快ToolStripMenuItem_Click(object sender, EventArgs e)
         {
             changeChecked(较快ToolStripMenuItem);
             timer1.Interval = (int)speeds.quicker;
+            speedLevel = 3;
         }
         /*速度选择非常快*/
         private void 非常快ToolStripMenuItem_Click(object sender, EventArgs e)
         {
             changeChecked(非常快ToolStripMenuItem);
             timer1.Interval = (int)speeds.quickest;
+            speedLevel = 5;
         }
         /*速度选择需要用到的方法*/
         public void changeChecked(ToolStripMenuItem oo)
@@ -335,19 +345,14 @@ namespace TetrisDemo
         {
             GameField.BackColor = Color.Gainsboro;
             picBackGround.BackColor = Color.Gainsboro;
-            GameField.BlockForeColor = new Color[] { Color.Blue, Color.Beige, Color.DarkKhaki, Color.DarkMagenta, Color.DarkOliveGreen, Color.DarkOrange, Color.DarkRed };
-            GameField.BlockBackColor = new Color[] { Color.LightCyan, Color.DarkSeaGreen, Color.Beige, Color.Beige, Color.Beige, Color.Beige, Color.Beige };
+            GameField.BlockForeColor = new Color[] { Color.Blue, Color.Beige, Color.DarkKhaki, Color.DarkMagenta, Color.DarkOliveGreen, Color.DarkOrange, Color.DarkRed, Color.DarkSeaGreen };
+            GameField.BlockBackColor = new Color[] { Color.LightCyan, Color.DarkSeaGreen, Color.Beige, Color.Beige, Color.Beige, Color.Beige, Color.Beige, Color.Beige };
             saveSettings();
             GameField.isChanged = false;
         }
         #endregion
 
         private void groupBox1_Enter(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label2_Click(object sender, EventArgs e)
         {
 
         }
@@ -393,8 +398,9 @@ namespace TetrisDemo
             GameField.arrBitBlock = new int[GameField.height];
             score = 0;           //重新计算积分
             t_score.Text = "0";
+            level = 1;
             msg.SendToBack();   //将提示窗口隐藏
-            currentBlock = createBlock(startLocation,BlockTypes.undefined);
+            currentBlock = createBlock(startLocation, BlockTypes.undefined);
             currentBlock.Draw(GameField.winHandle);
             nextBlock = createBlock(new Point(80, 50), BlockTypes.undefined);
             nextBlock.Draw(pic_preView.Handle);
@@ -409,7 +415,7 @@ namespace TetrisDemo
             Random rand = new Random();
             if (blockTypes == BlockTypes.undefined)
             {
-                blockTypes = (BlockTypes)(rand.Next(7) + 1);
+                blockTypes = (BlockTypes)(rand.Next(8) + 1);
             }
             Block block;
             switch (blockTypes)
@@ -435,6 +441,9 @@ namespace TetrisDemo
                 case BlockTypes.S:
                     block = new BlockS(loc);
                     break;
+                case BlockTypes.One:
+                    block = new BlockOne(loc);
+                    break;
                 default:
                     block = new BlockO(loc);
                     break;
@@ -447,7 +456,7 @@ namespace TetrisDemo
             Random rand = new Random();
             if (blockTypes == BlockTypes.undefined)
             {
-                blockTypes = (BlockTypes)(rand.Next(7) + 1);
+                blockTypes = (BlockTypes)(rand.Next(8) + 1);
             }
             Block block;
             switch (blockTypes)
@@ -473,11 +482,67 @@ namespace TetrisDemo
                 case BlockTypes.S:
                     block = new BlockS(loc, c1, c2);
                     break;
+                case BlockTypes.One:
+                    block = new BlockOne(loc, c1, c2);
+                    break;
                 default:
                     block = new BlockO(loc, c1, c2);
                     break;
             }
             return block;
         }
+
+        private void changeSpeed()
+        {
+            double ratio = 1.0;
+            if (score < 100)
+            {
+
+            }
+            else if (score >= 100 && score < 300)
+            {
+                level = 2;
+                ratio = 0.8;
+            }
+            else if (score >= 300 && score <= 600)
+            {
+                level = 3;
+                ratio = 0.6;
+            }
+            else if (score >= 600 && score <= 1000)
+            {
+                level = 4;
+                ratio = 0.4;
+            }
+            else if (score >= 1500)
+            {
+                level = 5;
+                ratio = 0.2;
+            }
+
+
+            if (speedLevel == 1)
+            {
+                timer1.Interval = (int)((double)speeds.slower * ratio);
+            }
+            else if (speedLevel == 2)
+            {
+                timer1.Interval = (int)((double)speeds.slow * ratio);
+            }
+            else if (speedLevel == 3)
+            {
+                timer1.Interval = (int)((double)speeds.quick * ratio);
+            }
+            else if (speedLevel == 4)
+            {
+                timer1.Interval = (int)((double)speeds.quicker * ratio);
+            }
+            else if (speedLevel == 5)
+            {
+                timer1.Interval = (int)((double)speeds.quickest * ratio);
+            }
+
+        }
+
     }
 }
