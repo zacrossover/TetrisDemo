@@ -17,7 +17,7 @@ namespace TetrisDemo
         {
             size = initSize;
             foreColor = initForeColor;
-            backColor = initBackColor;
+//            backColor = initBackColor;
         }
         //画方块
         public void Draw(System.IntPtr winHandle)
@@ -26,11 +26,16 @@ namespace TetrisDemo
             GraphicsPath gp = new GraphicsPath();
             Rectangle rec = new Rectangle(location, size);
             gp.AddRectangle(rec);
-            Color[] surroundColor = new Color[] { backColor };
-            PathGradientBrush pb = new PathGradientBrush(gp);
+//            Color[] surroundColor = new Color[] { backColor };
+/*            PathGradientBrush pb = new PathGradientBrush(gp);
             pb.CenterColor = foreColor;
-            pb.SurroundColors = surroundColor;
-            g.FillPath(pb, gp);
+            pb.SurroundColors = surroundColor;*/
+            SolidBrush  sb = new SolidBrush(foreColor);
+            Pen pen = new Pen(Color.White);
+            g.FillRectangle(sb, rec);
+            g.DrawRectangle(pen,rec);
+/*            g.FillPath(pb, gp);
+            g.FillRectangle(pb, rec);*/
         }
         //擦除方块
         public void Erase(System.IntPtr winHandle)

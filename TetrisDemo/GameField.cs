@@ -2,8 +2,12 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Media;
+using System.Numerics;
 using System.Text;
 using System.Threading.Tasks;
+using Microsoft.DirectX;
+using Microsoft.DirectX.DirectSound;
+
 
 namespace TetrisDemo
 {
@@ -14,10 +18,13 @@ namespace TetrisDemo
         public const int SquareSize = 15;      //每个四分之一小方块的边长
         public static Color BackColor;         //场景的背景色
         public static System.IntPtr winHandle; //场景的handle
-        public static Color[] BlockForeColor = { Color.Blue, Color.Beige, Color.DarkKhaki, Color.DarkMagenta, Color.DarkOliveGreen, Color.DarkOrange, Color.DarkRed ,Color.DarkSeaGreen };
-        public static Color[] BlockBackColor = { Color.LightCyan, Color.DarkSeaGreen, Color.Beige, Color.Beige, Color.Beige, Color.Beige, Color.Beige, Color.Beige };
-        public static bool isChanged = false; 
-        public static SoundPlayer sound = new SoundPlayer();
+        public static Color[] BlockForeColor = { Color.Blue, Color.DeepPink, Color.DarkKhaki, Color.DarkMagenta, Color.DarkOliveGreen, Color.DarkOrange, Color.DarkRed, Color.DarkSeaGreen };
+//        public static Color[] BlockBackColor = { Color.LightCyan, Color.DarkSeaGreen, Color.Beige, Color.Beige, Color.Beige, Color.Beige, Color.Beige, Color.Beige };
+        public static bool isChanged = false;
+        
+        public static SoundPlayer backSound = new SoundPlayer();
+        public static SecondaryBuffer secBuffer;//缓冲区对象    
+        public static Device secDev;//设备对象    
 
         public static Square[,] arriveBlock = new Square[width, height]; //保存已经不能再下落了的方块
         public static int[] arrBitBlock = new int[height];  //位数组：当某个位置有方块时，该行的该位为1,相当于2维数组
@@ -83,6 +90,7 @@ namespace TetrisDemo
         /*播放声音*/
         public static void PlaySound(string soundstr)
         {
+            SoundPlayer sound = new SoundPlayer();
             switch (soundstr)
             {
                 case "FinishOneLine": //消除一行的声音
@@ -93,8 +101,40 @@ namespace TetrisDemo
                     if (!File.Exists("CanNotDo.wav")) return;
                     sound.SoundLocation = "CanNotDo.wav";
                     break;
+                case "GameOver": //当GameOver时
+                    if (!File.Exists("GameOver.wav")) return;
+                    sound.SoundLocation = "GameOver.wav";
+                    break;
             }
             sound.Play();
+        }
+        /*播放背景声音*/
+        public static void PlayBackGroundSound()
+        {
+            /*                       secDev = new Device();
+                                    //secDev.SetCooperativeLevel(this, CooperativeLevel.Normal);//设置设备协作级别    
+                                    secBuffer = new SecondaryBuffer("BackGround.wav", secDev);//创建辅助缓冲区    
+                                    secBuffer.Play(0, BufferPlayFlags.Looping);//设置缓冲区为默认播放 */
+
+
+            if (!File.Exists("BackGround.wav")) return;
+            backSound.SoundLocation = "BackGround.wav";
+
+            System.Windows.Forms.Timer timer = new System.Windows.Forms.Timer();
+            timer.Tick += (s, e) =>
+            {
+                backSound.PlayLooping();
+                timer.Start();
+            };
+            timer.Interval = 25000;
+            backSound.PlayLooping();
+            timer.Start();
+        }
+        /*停止播放背景声音*/
+        public static void StopBackGroundSound()
+        {
+            //secBuffer.Stop();
+            backSound.Stop();
         }
         /*重画*/
         public static void Redraw()

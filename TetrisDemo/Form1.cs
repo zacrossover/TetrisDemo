@@ -1,4 +1,7 @@
 using System.Collections.Generic;
+using System.ComponentModel;
+using System.Drawing.Printing;
+using System.Media;
 using System.Windows.Forms;
 using static TetrisDemo.Block;
 
@@ -14,6 +17,7 @@ namespace TetrisDemo
         private int speedLevel = 1;            //玩家速度等级
         private int level = 1;
         private string name = "";//玩家名称
+        BackgroundWorker m_bw = new BackgroundWorker();
 
         private list lst = new list();
         private enum speeds
@@ -54,7 +58,7 @@ namespace TetrisDemo
             if (line2 != null && line2.Split('=').Length > 1)
                 GameField.BlockForeColor = strToColor(line2.Split('=')[1]);
             if (line3 != null && line3.Split('=').Length > 1)
-                GameField.BlockBackColor = strToColor(line3.Split('=')[1]);
+//                GameField.BlockBackColor = strToColor(line3.Split('=')[1]);
             sr.Close();
             fs.Close();
         }
@@ -65,7 +69,7 @@ namespace TetrisDemo
             StreamWriter sw = new StreamWriter(fs);
             sw.WriteLine("GameFieldColor=" + GameField.BackColor.ToArgb());
             sw.WriteLine("BlockFroeColor=" + colorToStr(GameField.BlockForeColor));
-            sw.WriteLine("BlockBackColor=" + colorToStr(GameField.BlockBackColor));
+//            sw.WriteLine("BlockBackColor=" + colorToStr(GameField.BlockBackColor));
             sw.Flush();
             sw.Close();
             fs.Close();
@@ -139,6 +143,7 @@ namespace TetrisDemo
                 if (currentBlock.Top() == 0)
                 {//如果到顶则游戏结束
                     showMsg("Game Over！");
+                    GameField.PlaySound("GameOver");
                     stillRuning = false;
                     timer1.Stop();
                     lst.AddRanking(name, score);
@@ -150,7 +155,8 @@ namespace TetrisDemo
                 {
                     score += GameField.width * eraseLines;
                     t_score.Text = score.ToString();
-                    
+                    changeSpeed();
+                    printLevel(timer1.Interval);
                     picBackGround.Invalidate();
                     Application.DoEvents();
                     GameField.Redraw();
@@ -172,30 +178,21 @@ namespace TetrisDemo
             Application.DoEvents();
             GameField.Redraw();
         }
-        /*关闭窗体时，提示是否保存设置*/
-        private void Form1_FormClosing(object sender, FormClosingEventArgs e)
-        {
-            if (GameField.isChanged && MessageBox.Show("设置已改变，是否在退出前保存？", "提示", MessageBoxButtons.YesNo) == DialogResult.Yes)
-                saveSettings();
-        }
+
         #region 菜单……
-        /*开始游戏*/
-        private void 开始ToolStripMenuItem1_Click(object sender, EventArgs e)
-        {
-            beginGame();
-        }
+
         //开始游戏的方法
         private void beginGame()
         {
             msg.SendToBack();   //将提示窗口隐藏
-            开始ToolStripMenuItem.Enabled = false;
-            暂停ToolStripMenuItem1.Enabled = true;
-            结束ToolStripMenuItem.Enabled = true;
+
             button1.Enabled = false;
             button2.Enabled = true;
-            button3.Enabled = true;
+            //button3.Enabled = true;
             if (currentBlock == null)
             {//第一次开始
+                GameField.arriveBlock = new Square[GameField.width, GameField.height]; //清空所有小方块
+                GameField.arrBitBlock = new int[GameField.height];
                 currentBlock = createBlock(startLocation, BlockTypes.undefined);
                 currentBlock.Draw(GameField.winHandle);
                 nextBlock = createBlock(new Point(80, 50), BlockTypes.undefined);
@@ -208,69 +205,20 @@ namespace TetrisDemo
                     // 点击确定后，将输入的姓名显示在标签上
                     label1.Text = "您好，" + name + "！";
                 }
+                printLevel(timer1.Interval);
                 timer1.Start();
             }
             else
             {
                 timer1.Enabled = true;
             }
-        }
-
-        /*暂停游戏*/
-        private void 暂停ToolStripMenuItem1_Click(object sender, EventArgs e)
-        {
-            timer1.Enabled = false;
-            showMsg("暂 停");
-            开始ToolStripMenuItem.Enabled = true;
-            暂停ToolStripMenuItem1.Enabled = false;
-            button1.Enabled = true;
-            button2.Enabled = false;
-        }
-
-        /*结束游戏*/
-        private void 结束ToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            stillRuning = false;
-            timer1.Stop();
-            lst.AddRanking(name, score);
-            currentBlock = null;
-            showMsg("结 束");
-            结束ToolStripMenuItem.Enabled = false;
-            暂停ToolStripMenuItem1.Enabled = false;
-            开始ToolStripMenuItem.Enabled = true;
-            button1.Enabled = true;
-            button2.Enabled = false;
-            button3.Enabled = false;
-            picBackGround.Refresh();
-            pic_preView.Refresh();
-        }
-
-        /*重新开始一盘*/
-        private void 重新开始ToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            timer1.Stop();
-            lst.AddRanking(name, score);
-            picBackGround.Refresh();   //刷新游戏区
-            pic_preView.Refresh();     //刷新预览区
-            GameField.arriveBlock = new Square[GameField.width, GameField.height]; //清空所有小方块
-            GameField.arrBitBlock = new int[GameField.height];
-            score = 0;           //重新计算积分
-            t_score.Text = "0";
-            level = 1;
-            msg.SendToBack();   //将提示窗口隐藏
-            currentBlock = createBlock(startLocation, BlockTypes.undefined);
-            currentBlock.Draw(GameField.winHandle);
-            nextBlock = createBlock(new Point(80, 50), BlockTypes.undefined);
-            nextBlock.Draw(pic_preView.Handle);
-            开始ToolStripMenuItem.Enabled = false;
-            暂停ToolStripMenuItem1.Enabled = true;
-            结束ToolStripMenuItem.Enabled = true;
-            stillRuning = true;
-            timer1.Start();
+            //m_bw.DoWork += new DoWorkEventHandler(bw_DoWork);
+            //m_bw.RunWorkerAsync();
+            GameField.PlayBackGroundSound();
         }
 
         /*退出游戏*/
-        private void 退出ToolStripMenuItem_Click(object sender, EventArgs e)
+        private void ExitToolStripMenuItem_Click(object sender, EventArgs e)
         {
             stillRuning = false;
             lst.AddRanking(name, score);
@@ -286,7 +234,7 @@ namespace TetrisDemo
             msg.BringToFront();
         }
         /*操作说明*/
-        private void 操作说明ToolStripMenuItem_Click(object sender, EventArgs e)
+        private void OperatingToolStripMenuItem_Click(object sender, EventArgs e)
         {
             help helps = new help();
             helps.Show();
@@ -297,74 +245,65 @@ namespace TetrisDemo
             about ab = new about();
             ab.Show();
         }
-        /*背景颜色设置*/
-        private void 背景颜色设置ToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            setGameFieldBgColor sb = new setGameFieldBgColor();
-            sb.ShowDialog();
-            picBackGround.BackColor = GameField.BackColor;
-        }
+
         /*方块颜色设置*/
-        private void 方块颜色设置ToolStripMenuItem_Click(object sender, EventArgs e)
+        /*private void ColorToolStripMenuItem_Click(object sender, EventArgs e)
         {
             setBlockColor sb = new setBlockColor();
             sb.ShowDialog();
-        }
+        }*/
         /*速度选择较慢*/
-        private void 较慢ToolStripMenuItem_Click(object sender, EventArgs e)
+        private void SlowerToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            changeChecked(较慢ToolStripMenuItem);
+            changeChecked(SlowerToolStripMenuItem);
             timer1.Interval = (int)speeds.slower;
-            speedLevel = 1;
+            printLevel(timer1.Interval);
         }
         /*速度选择慢*/
-        private void 慢ToolStripMenuItem_Click(object sender, EventArgs e)
+        private void SlowToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            changeChecked(慢ToolStripMenuItem);
+            changeChecked(SlowToolStripMenuItem);
             timer1.Interval = (int)speeds.slow;
-            speedLevel = 2;
+            printLevel(timer1.Interval);
         }
         /*速度选择快*/
-        private void 快ToolStripMenuItem_Click(object sender, EventArgs e)
+        private void QuickToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            changeChecked(快ToolStripMenuItem);
+            changeChecked(QuickToolStripMenuItem);
             timer1.Interval = (int)speeds.quick;
-            speedLevel = 3;
+            printLevel(timer1.Interval);
         }
         /*速度选择较快*/
-        private void 较快ToolStripMenuItem_Click(object sender, EventArgs e)
+        private void QuickerToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            changeChecked(较快ToolStripMenuItem);
+            changeChecked(QuickerToolStripMenuItem);
             timer1.Interval = (int)speeds.quicker;
-            speedLevel = 3;
+            printLevel(timer1.Interval);
         }
         /*速度选择非常快*/
-        private void 非常快ToolStripMenuItem_Click(object sender, EventArgs e)
+        private void QuickestToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            changeChecked(非常快ToolStripMenuItem);
+            changeChecked(QuickestToolStripMenuItem);
             timer1.Interval = (int)speeds.quickest;
-            speedLevel = 5;
+            printLevel(timer1.Interval);
         }
+
+        private void RankingToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            lst.StartPosition = FormStartPosition.CenterScreen;
+            lst.ShowDialog();
+        }
+        #endregion
         /*速度选择需要用到的方法*/
         public void changeChecked(ToolStripMenuItem oo)
         {
-            较慢ToolStripMenuItem.Checked = false;
-            慢ToolStripMenuItem.Checked = false;
-            快ToolStripMenuItem.Checked = false;
-            较快ToolStripMenuItem.Checked = false;
-            非常快ToolStripMenuItem.Checked = false;
+            SlowerToolStripMenuItem.Checked = false;
+            SlowToolStripMenuItem.Checked = false;
+            QuickToolStripMenuItem.Checked = false;
+            QuickerToolStripMenuItem.Checked = false;
+            QuickestToolStripMenuItem.Checked = false;
             oo.Checked = true;
         }
-        private void 恢复默认设置ToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            GameField.BackColor = Color.Gainsboro;
-            picBackGround.BackColor = Color.Gainsboro;
-            GameField.BlockForeColor = new Color[] { Color.Blue, Color.Beige, Color.DarkKhaki, Color.DarkMagenta, Color.DarkOliveGreen, Color.DarkOrange, Color.DarkRed, Color.DarkSeaGreen };
-            GameField.BlockBackColor = new Color[] { Color.LightCyan, Color.DarkSeaGreen, Color.Beige, Color.Beige, Color.Beige, Color.Beige, Color.Beige, Color.Beige };
-            saveSettings();
-            GameField.isChanged = false;
-        }
-        #endregion
 
         private void groupBox1_Enter(object sender, EventArgs e)
         {
@@ -380,28 +319,10 @@ namespace TetrisDemo
         {
             timer1.Enabled = false;
             showMsg("暂 停");
-            开始ToolStripMenuItem.Enabled = true;
-            暂停ToolStripMenuItem1.Enabled = false;
+
             button1.Enabled = true;
             button2.Enabled = false;
 
-        }
-
-        private void button3_Click(object sender, EventArgs e)
-        {
-            stillRuning = false;
-            timer1.Stop();
-            lst.AddRanking(name, score);
-            currentBlock = null;
-            showMsg("结 束");
-            结束ToolStripMenuItem.Enabled = false;
-            暂停ToolStripMenuItem1.Enabled = false;
-            开始ToolStripMenuItem.Enabled = true;
-            button1.Enabled = true;
-            button2.Enabled = false;
-            button3.Enabled = false;
-            picBackGround.Refresh();
-            pic_preView.Refresh();
         }
 
         private void button4_Click(object sender, EventArgs e)
@@ -414,15 +335,14 @@ namespace TetrisDemo
             GameField.arrBitBlock = new int[GameField.height];
             score = 0;           //重新计算积分
             t_score.Text = "0";
-            level = 1;
+            timer1.Interval = (int)speeds.slower;
+            printLevel(timer1.Interval);
             msg.SendToBack();   //将提示窗口隐藏
             currentBlock = createBlock(startLocation, BlockTypes.undefined);
             currentBlock.Draw(GameField.winHandle);
             nextBlock = createBlock(new Point(80, 50), BlockTypes.undefined);
             nextBlock.Draw(pic_preView.Handle);
-            开始ToolStripMenuItem.Enabled = false;
-            暂停ToolStripMenuItem1.Enabled = true;
-            结束ToolStripMenuItem.Enabled = true;
+
             stillRuning = true;
             timer1.Start();
         }
@@ -468,7 +388,7 @@ namespace TetrisDemo
             value = textBox.Text;
             return dialogResult;
         }
-            public Block createBlock(Point loc, BlockTypes blockTypes)
+        public Block createBlock(Point loc, BlockTypes blockTypes)
         {
             Random rand = new Random();
             if (blockTypes == BlockTypes.undefined)
@@ -552,61 +472,69 @@ namespace TetrisDemo
 
         private void changeSpeed()
         {
-            double ratio = 1.0;
+            //double ratio = 1.0;
             if (score < 100)
             {
 
             }
             else if (score >= 100 && score < 300)
             {
-                level = 2;
-                ratio = 0.8;
+                if (timer1.Interval >= (int)speeds.slower)
+                {
+                    timer1.Interval = (int)speeds.slow;
+                }
+
             }
             else if (score >= 300 && score <= 600)
             {
-                level = 3;
-                ratio = 0.6;
+                if (timer1.Interval >= (int)speeds.slow)
+                {
+                    timer1.Interval = (int)speeds.quick;
+                }
             }
             else if (score >= 600 && score <= 1000)
             {
-                level = 4;
-                ratio = 0.4;
+                if (timer1.Interval >= (int)speeds.quick)
+                {
+                    timer1.Interval = (int)speeds.quicker;
+                }
             }
             else if (score >= 1500)
             {
-                level = 5;
-                ratio = 0.2;
-            }
-
-
-            if (speedLevel == 1)
-            {
-                timer1.Interval = (int)((double)speeds.slower * ratio);
-            }
-            else if (speedLevel == 2)
-            {
-                timer1.Interval = (int)((double)speeds.slow * ratio);
-            }
-            else if (speedLevel == 3)
-            {
-                timer1.Interval = (int)((double)speeds.quick * ratio);
-            }
-            else if (speedLevel == 4)
-            {
-                timer1.Interval = (int)((double)speeds.quicker * ratio);
-            }
-            else if (speedLevel == 5)
-            {
-                timer1.Interval = (int)((double)speeds.quickest * ratio);
+                if (timer1.Interval >= (int)speeds.quicker)
+                {
+                    timer1.Interval = (int)speeds.quickest;
+                }
             }
 
         }
 
 
-        private void 排行榜ToolStripMenuItem_Click(object sender, EventArgs e)
+
+
+
+        private void printLevel(int interval)
         {
-            lst.StartPosition = FormStartPosition.CenterScreen;
-            lst.ShowDialog();
+            if (interval == (int)speeds.slower)
+            {
+                label2.Text = "1";
+            }
+            else if (interval == (int)speeds.slow)
+            {
+                label2.Text = "2";
+            }
+            else if (interval == (int)speeds.quick)
+            {
+                label2.Text = "3";
+            }
+            else if (interval == (int)speeds.quicker)
+            {
+                label2.Text = "4";
+            }
+            else if (interval == (int)speeds.quickest)
+            {
+                label2.Text = "5";
+            }
         }
     }
 }

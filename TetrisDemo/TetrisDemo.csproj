@@ -9,4 +9,13 @@
     <ApplicationManifest>app.manifest</ApplicationManifest>
   </PropertyGroup>
 
+  <ItemGroup>
+    <Reference Include="Microsoft.DirectX">
+      <HintPath>bin\Debug\net6.0-windows\Microsoft.DirectX.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.DirectX.DirectSound">
+      <HintPath>bin\Debug\net6.0-windows\Microsoft.DirectX.DirectSound.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
 </Project>

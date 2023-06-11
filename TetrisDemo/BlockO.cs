@@ -13,7 +13,7 @@ namespace TetrisDemo
         {
             blockType = BlockTypes.square;
             foreColor = GameField.BlockForeColor[0];
-            backColor = GameField.BlockBackColor[0];
+//            backColor = GameField.BlockBackColor[0];
             Size squareS = new Size(squareSize, squareSize);
             square1 = new Square(squareS, foreColor, backColor);
             square2 = new Square(squareS, foreColor, backColor);
