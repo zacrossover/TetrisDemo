@@ -315,7 +315,7 @@ namespace TetrisDemo
             currentBlock.Draw(GameField.winHandle);
             nextBlock = createBlock(new Point(80, 50), BlockTypes.undefined);
             nextBlock.Draw(pic_preView.Handle);
-
+            changeChecked(SlowerToolStripMenuItem);
             stillRuning = true;
             timer1.Start();
         }

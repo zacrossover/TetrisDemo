@@ -259,7 +259,7 @@
             button1.Click += button1_Click;
             // 
             // button2
-            // 
+            // list
             button2.Enabled = false;
             button2.Location = new Point(379, 403);
             button2.Name = "button2";
