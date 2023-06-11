@@ -31,9 +31,10 @@ namespace TetrisDemo
             {
                 // 从文本文件中读取排行榜数据
                 var lines = File.ReadAllLines(RankingListFilePath);
+                MessageBox.Show(lines.Length.ToString());
                 foreach (var line in lines)
                 {
-                    var parts = line.Split(' ');
+                    var parts = line.Split('\t');
                     if (parts.Length >= 2 && int.TryParse(parts[1], out int score))
                     {
                         _rankings.Add(new RankingItem(parts[0], score));
