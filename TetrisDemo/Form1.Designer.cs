@@ -326,6 +326,7 @@
             StartPosition = FormStartPosition.CenterScreen;
             Text = "俄罗斯方块";
             Activated += Form1_Activated;
+            FormClosed += Form1_Closed;
             Load += Form1_Load;
             KeyDown += Form1_KeyDown;
             ((System.ComponentModel.ISupportInitialize)picBackGround).EndInit();

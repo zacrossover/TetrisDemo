@@ -14,10 +14,8 @@ namespace TetrisDemo
         private Point startLocation = new Point(GameField.SquareSize * 8, 0);  //方块产生的位置
         private int score = 0;            //玩家积分
         private bool stillRuning = false; //游戏运行开关
-        private int speedLevel = 1;            //玩家速度等级
-        private int level = 1;
+
         private string name = "";//玩家名称
-        BackgroundWorker m_bw = new BackgroundWorker();
 
         private list lst = new list();
         private enum speeds
@@ -58,22 +56,11 @@ namespace TetrisDemo
             if (line2 != null && line2.Split('=').Length > 1)
                 GameField.BlockForeColor = strToColor(line2.Split('=')[1]);
             if (line3 != null && line3.Split('=').Length > 1)
-//                GameField.BlockBackColor = strToColor(line3.Split('=')[1]);
-            sr.Close();
+                //                GameField.BlockBackColor = strToColor(line3.Split('=')[1]);
+                sr.Close();
             fs.Close();
         }
-        /*如果游戏设置被更改，将新的设置保存到Setting.ini*/
-        private void saveSettings()
-        {
-            FileStream fs = new FileStream("Setting.ini", FileMode.Create, FileAccess.ReadWrite);
-            StreamWriter sw = new StreamWriter(fs);
-            sw.WriteLine("GameFieldColor=" + GameField.BackColor.ToArgb());
-            sw.WriteLine("BlockFroeColor=" + colorToStr(GameField.BlockForeColor));
-//            sw.WriteLine("BlockBackColor=" + colorToStr(GameField.BlockBackColor));
-            sw.Flush();
-            sw.Close();
-            fs.Close();
-        }
+
         /*将字符串变回成颜色数组*/
         private Color[] strToColor(string str)
         {
@@ -84,14 +71,6 @@ namespace TetrisDemo
             for (int i = 0; i < strs.Length - 1; i++)
                 colors[i] = Color.FromArgb(int.Parse(strs[i]));
             return colors;
-        }
-        /*将颜色变成可读字符串*/
-        private string colorToStr(Color[] colors)
-        {
-            string result = "";
-            for (int i = 0; i < colors.Length; i++)
-                result += colors[i].ToArgb() + ",";
-            return result;
         }
 
         /// <summary>
@@ -246,12 +225,6 @@ namespace TetrisDemo
             ab.Show();
         }
 
-        /*方块颜色设置*/
-        /*private void ColorToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            setBlockColor sb = new setBlockColor();
-            sb.ShowDialog();
-        }*/
         /*速度选择较慢*/
         private void SlowerToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -509,10 +482,6 @@ namespace TetrisDemo
 
         }
 
-
-
-
-
         private void printLevel(int interval)
         {
             if (interval == (int)speeds.slower)
@@ -536,5 +505,12 @@ namespace TetrisDemo
                 label2.Text = "5";
             }
         }
+        private void Form1_Closed(object sender, EventArgs e)
+        {
+            stillRuning = false;
+            lst.AddRanking(name, score);
+            timer1.Stop();
+        }
+
     }
 }

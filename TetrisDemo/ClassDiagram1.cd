@@ -1,0 +1,142 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="TetrisDemo.about">
+    <Position X="2.25" Y="0.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAQAACAAABAAAAyAAAACAAAgAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>about.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TetrisDemo.Block">
+    <Position X="9.5" Y="0.5" Width="1.5" />
+    <NestedTypes>
+      <Enum Name="TetrisDemo.Block.BlockTypes" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>Block.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Enum>
+      <Enum Name="TetrisDemo.Block.RotateDirections" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>Block.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Enum>
+    </NestedTypes>
+    <TypeIdentifier>
+      <HashCode>AAAAQAAAEAECAgAAAACAAAAAGAAIAAAAAAEAAB4AgAA=</HashCode>
+      <FileName>Block.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TetrisDemo.BlockI">
+    <Position X="10.75" Y="7" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>BlockI.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TetrisDemo.BlockJ">
+    <Position X="15.25" Y="7" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>BlockJ.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TetrisDemo.BlockL">
+    <Position X="1.75" Y="7" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>BlockL.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TetrisDemo.BlockO">
+    <Position X="6.25" Y="7" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>BlockO.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TetrisDemo.BlockOne">
+    <Position X="13" Y="7" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAACAAAAAAAAAAAAEAAAAAAAAAAAAQAAAAA=</HashCode>
+      <FileName>BlockOne.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TetrisDemo.BlockS">
+    <Position X="17.5" Y="7" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>BlockS.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TetrisDemo.BlockT">
+    <Position X="4" Y="7" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>BlockT.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TetrisDemo.BlockZ">
+    <Position X="8.5" Y="7" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>BlockZ.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TetrisDemo.Form1" Collapsed="true">
+    <Position X="19.75" Y="0.5" Width="1.5" />
+    <NestedTypes>
+      <Enum Name="TetrisDemo.Form1.speeds" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>Form1.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Enum>
+    </NestedTypes>
+    <TypeIdentifier>
+      <HashCode>AQQARAAIkPhKiBWSgACIABACAsYcMAQAoWYJQCAAFAY=</HashCode>
+      <FileName>Form1.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TetrisDemo.GameField">
+    <Position X="13.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>IABAAAAAAAAAAEQAQEAEMAgAUAEAAAACAABAQAAJQSA=</HashCode>
+      <FileName>GameField.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TetrisDemo.help">
+    <Position X="4.25" Y="0.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAACAAABAAAACAAAACAAAIAAAAAEAAAAAAAAA=</HashCode>
+      <FileName>help.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TetrisDemo.list">
+    <Position X="11.5" Y="0.5" Width="1.5" />
+    <NestedTypes>
+      <Class Name="TetrisDemo.list.RankingItem" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>list.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Class>
+    </NestedTypes>
+    <TypeIdentifier>
+      <HashCode>AAAQAAQAACCAAJAAABCAAAICAgAAAAAAAAAAAIEAAIA=</HashCode>
+      <FileName>list.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TetrisDemo.Program">
+    <Position X="15.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAA=</HashCode>
+      <FileName>Program.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TetrisDemo.Square">
+    <Position X="6.25" Y="0.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAEAAgAAAIAAAAACCAAAAAAAAAEAAAAAAAA=</HashCode>
+      <FileName>Square.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Microsoft YaHei UI" Size="9" />
+</ClassDiagram>
